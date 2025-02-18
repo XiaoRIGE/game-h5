@@ -1,13 +1,18 @@
 <script setup>
 import Header from "./layout/Header.vue";
-import Content from "./layout/Content.vue";
 import Footer from "./layout/Footer.vue";
 </script>
 
 <template>
   <div class="main">
     <Header class="header" />
-    <Content class="content" />
+    <!-- <Content class="content" /> -->
+    <router-view></router-view>
+    <!-- <router-view v-slot="{ Component }">
+      <keep-alive>
+        <component :is="Component" />
+      </keep-alive>
+    </router-view> -->
     <Footer />
   </div>
 </template>
