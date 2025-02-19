@@ -1,12 +1,14 @@
 <template>
   <div class="header">
-    <div class="img-box">
+    <!-- 左侧按钮 -->
+    <div class="img-box w-172">
       <!-- 在中等屏幕（≥576px 且 <992px）上显示 -->
       <img
         @click="handleShowPanel"
         src="../assets/menu.svg"
         class="d-none d-sm-block"
         alt=""
+        ref="targetElement2"
       />
       <!-- 在小屏幕（<576px）上显示 -->
       <img
@@ -16,19 +18,14 @@
         alt=""
         data-bs-toggle="offcanvas"
         href="#offcanvasExample"
+        ref="targetElement3"
       />
 
-      <!-- 在中等屏幕（≥576px 且 <992px）上显示 -->
+      <!-- 在中等屏幕（≥576px 且 <992px）上显示 面板信息-->
       <Transition class="d-none d-sm-block" name="fade">
-        <div v-if="showPanel" class="panel">
+        <div v-if="showPanel" class="panel" ref="targetElement">
           <!-- 用户信息 -->
 
-          <!-- <img
-            @click="showLogin"
-            v-if="!isLogin"
-            src="../assets/login.svg"
-            alt=""
-          /> -->
           <login v-if="!isLogin" />
 
           <div v-else class="user-box">
@@ -45,11 +42,11 @@
             <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
             <div class="menu-item">FAQ</div>
           </div>
-          <div class="desc">ABOUT US</div>
+          <div @click="goPage('about')" class="desc">ABOUT US</div>
         </div>
       </Transition>
 
-      <!-- 在小屏幕（<576px）上显示 -->
+      <!-- 在小屏幕（<576px）上显示 面板信息-->
       <div
         class="offcanvas offcanvas-start d-block d-sm-none left-panel w-100"
         tabindex="-1"
@@ -95,7 +92,14 @@
               <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
               <div class="menu-item">FAQ</div>
             </div>
-            <div class="desc">ABOUT US</div>
+            <div
+              @click="goPage('about')"
+              class="desc"
+              data-bs-dismiss="offcanvas"
+              aria-label="Close"
+            >
+              ABOUT US
+            </div>
           </div>
         </div>
       </div>
@@ -103,8 +107,8 @@
 
     <span class="title">TOKYO $TUPID GAMES</span>
 
-    <div>
-      <!-- <img class="d-none d-sm-block" src="../assets/login.svg" alt="" /> -->
+    <!-- 右侧按钮 -->
+    <div class="w-172">
       <div class="d-none d-sm-block">
         <login />
       </div>
@@ -113,8 +117,15 @@
 </template>
 
 <script setup>
-import { ref, reactive } from "vue";
+import { ref, reactive, onMounted, onUnmounted } from "vue";
 import login from "@/components/login.vue";
+import { useRouter } from "vue-router";
+
+const router = useRouter();
+const goPage = (path) => {
+  router.push({ name: `${path}` });
+  showPanel.value = false;
+};
 
 // 是否展示面板
 const showPanel = ref(false);
@@ -122,17 +133,37 @@ const handleShowPanel = () => {
   showPanel.value = !showPanel.value;
 };
 
+const targetElement = ref(null);
+const targetElement2 = ref(null);
+const targetElement3 = ref(null);
+// 点击区域外事件处理函数
+const handleClickOutside = (event) => {
+  if (
+    targetElement.value &&
+    !targetElement.value.contains(event.target) &&
+    targetElement2.value &&
+    !targetElement2.value.contains(event.target) &&
+    targetElement3.value &&
+    !targetElement3.value.contains(event.target)
+  ) {
+    console.log("点击了区域外");
+    showPanel.value = false;
+  }
+};
+onMounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
+onUnmounted(() => {
+  document.addEventListener("click", handleClickOutside);
+});
+
 // 是否已经登录
 const isLogin = ref(false);
 const userInfo = reactive({
   userName: "Player678",
   userId: "12487124098",
 });
-
-const isShowLogin = ref(false);
-const showLogin = () => {
-  isShowLogin.value = true;
-};
 </script>
 
 <style lang="scss" scoped>
@@ -251,6 +282,17 @@ const showLogin = () => {
   .title {
     color: #fff;
     font-size: 18px;
+    line-height: 24px;
+  }
+}
+@media (max-width: 576px) {
+  .w-172 {
+    width: 72px;
+  }
+}
+@media (min-width: 576px) {
+  .w-172 {
+    width: 172px;
   }
 }
 
