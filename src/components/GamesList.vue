@@ -6,17 +6,17 @@
 
       <div class="item-box">
         <div class="item me-4">
-          <img src="../assets/game1.png" alt="" />
+          <img src="../assets/game1.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
         <div class="item me-4">
-          <img src="../assets/game2.png" alt="" />
+          <img src="../assets/game2.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
         <div class="item">
-          <img src="../assets/game3.png" alt="" />
+          <img src="../assets/game3.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
       </div>
@@ -34,17 +34,17 @@
 
       <div class="item-box">
         <div class="item me-4">
-          <img src="../assets/game1.png" alt="" />
+          <img src="../assets/game1.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
         <div class="item me-4">
-          <img src="../assets/game2.png" alt="" />
+          <img src="../assets/game2.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
         <div class="item">
-          <img src="../assets/game3.png" alt="" />
+          <img src="../assets/game3.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
       </div>
@@ -107,6 +107,9 @@
         #e10fa3 100%
       );
       opacity: 0.1; /* 只影响背景图像 */
+    }
+    img {
+      width: 357px;
     }
 
     .game-desc {

@@ -23,7 +23,13 @@
         <div v-if="showPanel" class="panel">
           <!-- 用户信息 -->
 
-          <img v-if="!isLogin" src="../assets/login.svg" alt="" />
+          <!-- <img
+            @click="showLogin"
+            v-if="!isLogin"
+            src="../assets/login.svg"
+            alt=""
+          /> -->
+          <login v-if="!isLogin" />
 
           <div v-else class="user-box">
             <img src="../assets/avatar.svg" alt="" />
@@ -71,7 +77,9 @@
           <div v-if="showPanel" class="panel-small">
             <!-- 用户信息 -->
 
-            <img v-if="!isLogin" src="../assets/login.svg" alt="" />
+            <!-- <img v-if="!isLogin" src="../assets/login.svg" alt="" /> -->
+
+            <login v-if="!isLogin" />
 
             <div v-else class="user-box">
               <img src="../assets/avatar.svg" alt="" />
@@ -96,13 +104,17 @@
     <span class="title">TOKYO $TUPID GAMES</span>
 
     <div>
-      <img class="d-none d-sm-block" src="../assets/login.svg" alt="" />
+      <!-- <img class="d-none d-sm-block" src="../assets/login.svg" alt="" /> -->
+      <div class="d-none d-sm-block">
+        <login />
+      </div>
     </div>
   </div>
 </template>
 
 <script setup>
 import { ref, reactive } from "vue";
+import login from "@/components/login.vue";
 
 // 是否展示面板
 const showPanel = ref(false);
@@ -116,6 +128,11 @@ const userInfo = reactive({
   userName: "Player678",
   userId: "12487124098",
 });
+
+const isShowLogin = ref(false);
+const showLogin = () => {
+  isShowLogin.value = true;
+};
 </script>
 
 <style lang="scss" scoped>

@@ -5,7 +5,7 @@ import Footer from "./layout/Footer.vue";
 
 <template>
   <div class="main">
-    <Header class="header" />
+    <Header />
     <!-- <Content class="content" /> -->
     <router-view></router-view>
     <!-- <router-view v-slot="{ Component }">
