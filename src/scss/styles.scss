@@ -1,6 +1,7 @@
 // Import all of Bootstrap's CSS
 @import "bootstrap/scss/bootstrap";
 
+// 标题下面渐变
 .base-border {
   border-image: linear-gradient(to right, blue, red) 4;
   border-width: 4px;
@@ -10,6 +11,7 @@
   border-right: none;
 }
 
+// 渐变border
 .base-round-border {
   text-align: center;
   border-radius: 65px;
@@ -27,3 +29,13 @@
   background-image: linear-gradient(to right, #1f0c27, #1f0c27),
     linear-gradient(90deg, red, blue);
 }
+
+// .fade-enter-active,
+// .fade-leave-active {
+//   transition: opacity 0.5s ease;
+// }
+
+// .fade-enter-from,
+// .fade-leave-to {
+//   opacity: 0;
+// }
