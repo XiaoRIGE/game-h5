@@ -106,15 +106,55 @@
     <!-- 右侧按钮 -->
     <div class="w-172">
       <div class="d-none d-sm-block">
-        <login />
+        <!-- 登录按钮 -->
+        <login v-if="!isLogin" />
+        <!-- 个人账户信息 -->
+        <div v-else class="userInfo">
+          <!-- 钱包余额 -->
+          <div class="d-none d-lg-block">
+            <div class="userInfo-item">
+              <img
+                src="../assets//header-wallet.svg"
+                class="userInfo-item__img"
+              />
+              <span class="userInfo-item__text">10000</span>
+              <img src="../assets/header-plus.svg" alt="" />
+            </div>
+          </div>
+          <!-- candy数量 -->
+          <div class="d-none d-lg-block">
+            <div class="userInfo-item">
+              <img
+                src="../assets//header-candy.svg"
+                class="userInfo-item__img"
+              />
+              <span class="userInfo-item__text">6868</span>
+              <img src="../assets/header-plus.svg" alt="" />
+            </div>
+          </div>
+          <!-- 用户头像 -->
+          <img
+            @click="handleShowUserInfo"
+            src="../assets/header-avatar.svg"
+            alt=""
+          />
+        </div>
       </div>
     </div>
   </div>
+
+  <!-- 用户信息弹窗 -->
+  <Modal v-model="showUserInfoModal">
+    <UserInfo />
+  </Modal>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, onUnmounted } from "vue";
 import login from "@/components/login.vue";
+import UserInfo from "@/components/UserInfo.vue";
+import Modal from "@/components/Modal.vue";
+
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -157,12 +197,20 @@ onUnmounted(() => {
   document.addEventListener("click", handleClickOutside);
 });
 
-// 是否已经登录
-const isLogin = ref(false);
+// 是否已经登录(后续可以使用pinia管理该值)
+const isLogin = ref(true);
 const userInfo = reactive({
   userName: "Player678",
   userId: "12487124098",
 });
+
+// 展示个人信息弹窗
+const showUserInfoModal = ref(false);
+const handleShowUserInfo = () => {
+  showUserInfoModal.value = true;
+
+  console.log("showUserInfoModal.value", showUserInfoModal.value);
+};
 </script>
 
 <style lang="scss" scoped>
@@ -282,6 +330,39 @@ const userInfo = reactive({
     color: #fff;
     font-size: 18px;
     line-height: 24px;
+  }
+
+  .userInfo {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &-item {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      margin-right: 8px;
+      position: relative;
+      background-color: #212121;
+      border-radius: 65px;
+      height: 48px;
+      padding-left: 48px;
+      padding-right: 16px;
+      text-align: center;
+      color: #fff;
+      line-height: 48px;
+      &__img {
+        position: absolute;
+        left: 0;
+        top: 0;
+      }
+      &__text {
+        margin: 0 8px;
+        font-weight: 400;
+        font-size: 20px;
+
+        color: #ffffff;
+      }
+    }
   }
 }
 @media (max-width: 576px) {
