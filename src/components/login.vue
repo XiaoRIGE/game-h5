@@ -498,6 +498,7 @@ const handleSubmit = () => {
   .tips {
     margin-bottom: 40px;
     font-size: 16px;
+    line-height: 24px;
     color: #fff;
     text-align: center;
     font-weight: 400;

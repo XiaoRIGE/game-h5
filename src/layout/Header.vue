@@ -67,16 +67,12 @@
           <div></div>
         </div>
         <div class="offcanvas-body">
-          <!-- <div>
-            Some text as placeholder. In real life you can have the elements you
-            have chosen. Like, text, images, lists, etc.
-          </div> -->
           <div v-if="showPanel" class="panel-small">
             <!-- 用户信息 -->
 
-            <!-- <img v-if="!isLogin" src="../assets/login.svg" alt="" /> -->
-
-            <login v-if="!isLogin" />
+            <div v-if="!isLogin" ref="loginElement">
+              <login />
+            </div>
 
             <div v-else class="user-box">
               <img src="../assets/avatar.svg" alt="" />
@@ -136,6 +132,7 @@ const handleShowPanel = () => {
 const targetElement = ref(null);
 const targetElement2 = ref(null);
 const targetElement3 = ref(null);
+const loginElement = ref(null);
 // 点击区域外事件处理函数
 const handleClickOutside = (event) => {
   if (
@@ -144,10 +141,12 @@ const handleClickOutside = (event) => {
     targetElement2.value &&
     !targetElement2.value.contains(event.target) &&
     targetElement3.value &&
-    !targetElement3.value.contains(event.target)
+    !targetElement3.value.contains(event.target) &&
+    loginElement.value &&
+    !loginElement.value.contains(event.target)
   ) {
     console.log("点击了区域外");
-    showPanel.value = false;
+    // showPanel.value = false;
   }
 };
 onMounted(() => {
