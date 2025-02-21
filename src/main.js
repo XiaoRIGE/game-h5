@@ -5,10 +5,16 @@ import App from "./App.vue";
 import "./scss/styles.scss";
 import router from "./routers/index";
 
+import { message, Table } from "ant-design-vue";
+
 // Import all of Bootstrap's JS
 import * as bootstrap from "bootstrap";
 const app = createApp(App);
 
+app.config.globalProperties.$message = message;
+
 app.use(router);
+
+app.use(Table);
 
 app.mount("#app");

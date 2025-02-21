@@ -33,7 +33,7 @@ const closeModal = () => {
 };
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
 /* 蒙层样式 */
 .modal-overlay {
   position: fixed;
@@ -70,5 +70,11 @@ const closeModal = () => {
   border: none;
   font-size: 20px;
   cursor: pointer;
+}
+
+@media (max-width: 738px) {
+  .modal-content {
+    width: 100%;
+  }
 }
 </style>
