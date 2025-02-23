@@ -17,8 +17,12 @@ const router = createRouter({
     {
       path: "/all-games",
       name: "allGames",
-
       component: () => import("../views/allGames/index.vue"),
+    },
+    {
+      path: "/game-detail",
+      name: "gameDetail",
+      component: () => import("../views/allGames/detail.vue"),
     },
     {
       path: "/event",

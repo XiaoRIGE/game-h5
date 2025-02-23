@@ -37,7 +37,9 @@
           </div>
 
           <div class="menu-box">
-            <div class="menu-item border-bo">GACHA GAMES</div>
+            <div @click="goPage('allGames')" class="menu-item border-bo">
+              GACHA GAMES
+            </div>
             <div class="menu-item border-bo">MARKETPLACE</div>
             <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
             <div class="menu-item">FAQ</div>
@@ -82,8 +84,14 @@
               </div>
             </div>
 
-            <div class="menu-box">
-              <div class="menu-item border-bo">GACHA GAMES</div>
+            <div
+              class="menu-box"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasExample"
+            >
+              <div @click="goPage('allGames')" class="menu-item border-bo">
+                GACHA GAMES
+              </div>
               <div class="menu-item border-bo">MARKETPLACE</div>
               <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
               <div class="menu-item">FAQ</div>

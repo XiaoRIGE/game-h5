@@ -20,12 +20,14 @@
           </span>
         </div>
       </div>
-      <div class="btn base-round-border">Play</div>
+      <div @click="goPage" class="btn base-round-border">Play</div>
     </div>
   </div>
 </template>
 <script setup>
 import game1 from "@/assets/game1.gif";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const props = defineProps({
   game: Object,
@@ -39,6 +41,13 @@ const props = defineProps({
     };
   },
 });
+
+const goPage = () => {
+  router.push({
+    name: "gameDetail",
+    query: { id: props.game.id },
+  });
+};
 </script>
 
 <style lang="scss" scoped>
