@@ -8,15 +8,22 @@ const router = createRouter({
       name: "home",
       component: () => import("../views/home.vue"),
     },
-    {
-      path: "/landing-page",
-      name: "landingPage",
-      component: () => import("../views/index.vue"),
-    },
+
     {
       path: "/about",
       name: "about",
       component: () => import("../views/about/index.vue"),
+    },
+    {
+      path: "/all-games",
+      name: "allGames",
+
+      component: () => import("../views/allGames/index.vue"),
+    },
+    {
+      path: "/event",
+      name: "event",
+      component: () => import("../views/event/index.vue"),
     },
   ],
 });

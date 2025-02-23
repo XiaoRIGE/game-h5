@@ -1,5 +1,4 @@
 <template>
-  <!-- :row-selection="rowSelection" -->
   <a-table
     :dataSource="dataSource"
     :columns="columns"

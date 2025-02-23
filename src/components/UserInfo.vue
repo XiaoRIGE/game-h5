@@ -51,11 +51,10 @@
       </div>
 
       <!-- tab内容 -->
-
       <UserInfoTier v-show="activeKey === '1'" />
       <UserInfoCollection v-show="activeKey === '2'" />
       <UserInfoActivity v-show="activeKey === '3'" />
-      <UserInfoShipping v-show="activeKey === '4'" />
+      <UserInfoShipping v-if="activeKey === '4'" />
     </div>
   </div>
 </template>
