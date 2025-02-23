@@ -101,7 +101,9 @@
                 </div>
               </div>
             </div>
-            <div class="play_btn border-item">PURCHASING TICKET & PLAY</div>
+            <div @click="goPage('play')" class="play_btn border-item">
+              PURCHASING TICKET & PLAY
+            </div>
           </div>
         </div>
       </div>
@@ -120,6 +122,7 @@ import card2 from "@/assets/game-card2.png";
 import card3 from "@/assets/game-card3.png";
 import Modal from "@/components/Modal.vue";
 import FullCardList from "./components/FullCardList.vue";
+import { useRouter } from "vue-router";
 
 const imgList = ref([game1, card1, card2, card3]);
 
@@ -138,6 +141,12 @@ const handleSwitchCurrentTicketValue = (value) => {
 const showModal = ref(false);
 const showFull = () => {
   showModal.value = true;
+};
+
+const router = useRouter();
+// 跳转游戏开始界面
+const goPage = (path) => {
+  router.push(path);
 };
 </script>
 
