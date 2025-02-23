@@ -15,7 +15,9 @@
             </div>
 
             <div class="small-img__item border-item">
-              <div class="tips-text">Collection's full item list</div>
+              <div @click="showFull" class="tips-text">
+                Collection's full item list
+              </div>
             </div>
           </div>
         </div>
@@ -104,6 +106,10 @@
         </div>
       </div>
     </div>
+
+    <Modal v-model="showModal">
+      <FullCardList />
+    </Modal>
   </div>
 </template>
 <script setup>
@@ -112,6 +118,8 @@ import game1 from "@/assets/game1.gif";
 import card1 from "@/assets/game-card1.png";
 import card2 from "@/assets/game-card2.png";
 import card3 from "@/assets/game-card3.png";
+import Modal from "@/components/Modal.vue";
+import FullCardList from "./components/FullCardList.vue";
 
 const imgList = ref([game1, card1, card2, card3]);
 
@@ -124,6 +132,12 @@ const changeCurrentImage = (img) => {
 const currentTicketValue = ref(1);
 const handleSwitchCurrentTicketValue = (value) => {
   currentTicketValue.value = value;
+};
+
+// 展示全部卡片弹窗
+const showModal = ref(false);
+const showFull = () => {
+  showModal.value = true;
 };
 </script>
 
