@@ -30,6 +30,16 @@ const router = createRouter({
       component: () => import("../views/play/index.vue"),
     },
     {
+      path: "/result",
+      name: "result",
+      component: () => import("../views/results/index.vue"),
+    },
+    {
+      path: "/sell",
+      name: "sell",
+      component: () => import("../views/sell/index.vue"),
+    },
+    {
       path: "/event",
       name: "event",
       component: () => import("../views/event/index.vue"),

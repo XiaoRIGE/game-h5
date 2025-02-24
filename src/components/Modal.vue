@@ -1,18 +1,20 @@
 <template>
-  <div v-if="modelValue" class="modal-overlay">
-    <div class="modal-content">
-      <!-- 关闭按钮 -->
-      <!-- <button class="close-button" @click="closeModal">×</button> -->
-      <img
-        src="../assets/close.svg"
-        class="close-button"
-        @click="closeModal"
-        alt=""
-      />
-      <!-- 插槽内容 -->
-      <slot></slot>
+  <Teleport to="body">
+    <div v-if="modelValue" class="modal-overlay">
+      <div class="modal-content">
+        <!-- 关闭按钮 -->
+        <!-- <button class="close-button" @click="closeModal">×</button> -->
+        <img
+          src="../assets/close.svg"
+          class="close-button"
+          @click="closeModal"
+          alt=""
+        />
+        <!-- 插槽内容 -->
+        <slot></slot>
+      </div>
     </div>
-  </div>
+  </Teleport>
 </template>
 
 <script setup>
