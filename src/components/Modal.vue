@@ -1,7 +1,7 @@
 <template>
   <Teleport to="body">
     <div v-if="modelValue" class="modal-overlay">
-      <div class="modal-content">
+      <div class="modal-content" :style="{ width }">
         <!-- 关闭按钮 -->
         <!-- <button class="close-button" @click="closeModal">×</button> -->
         <img
@@ -23,6 +23,9 @@ const props = defineProps({
   modelValue: {
     type: Boolean,
     required: true,
+  },
+  width: {
+    default: "90%",
   },
 });
 

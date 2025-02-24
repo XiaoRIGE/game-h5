@@ -167,13 +167,95 @@
     </div>
 
     <div class="footer-btns">
-      <div class="btn1 base-round-border">Submit</div>
+      <div @click="handleSubmit" class="btn1 base-round-border">Submit</div>
       <div class="btn2">Cancel</div>
     </div>
+
+    <!-- confirm弹窗 -->
+    <Modal v-model="showModal" :width="width">
+      <div class="confirm-box">
+        <div class="confirm-title">Confirm your order</div>
+        <div class="confirm-desc">
+          Please recheck your information before continuing the order process
+        </div>
+
+        <div class="confirm-content">
+          <div class="confirm-content-title">ORDER SUMMARY</div>
+          <div class="confirm-content-item">
+            <span class="label">Email:</span>
+            <span class="value">abc@qq.com</span>
+          </div>
+          <div class="confirm-content-item">
+            <span class="label">Name:</span>
+            <span class="value">Jone Doe</span>
+          </div>
+          <div class="confirm-content-item">
+            <span class="label">Phone:</span>
+            <span class="value">01000xxx</span>
+          </div>
+          <div class="confirm-content-item">
+            <span class="label">Address:</span>
+            <span class="value">xxxxxxxxxxxxxx</span>
+          </div>
+          <div class="confirm-content-item">
+            <span class="label">Shipping fee:</span>
+            <span class="value fw-bolder">10 USDC</span>
+          </div>
+        </div>
+
+        <div class="confirm-desc">
+          After confirming the information,
+          <span class="fw-bolder">10 USDC</span>
+          will be deducted from your wallet.
+        </div>
+
+        <div class="footer-btn__modal">
+          <div @click="handleConfirm" class="btn1 base-round-border">
+            Confirm
+          </div>
+          <div @click="handleCancel" class="btn2">Cancel</div>
+        </div>
+      </div>
+    </Modal>
+
+    <!-- 结果弹窗 -->
+    <Modal v-model="showResult" width="400px">
+      <!-- Error -->
+
+      <div class="result-box">
+        <div v-if="isSuccess">
+          <div class="result-title">Success</div>
+          <img src="../../assets/result-success.svg" class="result-img" />
+          <div class="result-tips">
+            Payment for your shipping order was executed successfully, track
+            your package delivery process in
+            <span class="blue-text">Shipping Inventory</span>
+          </div>
+        </div>
+        <div v-else>
+          <div class="result-title">Error</div>
+          <img src="../../assets/result-err.svg" class="result-img" />
+          <div class="result-tips">
+            You don’t have enough USDC balance in your wallet, please increase
+            your wallet balance, then try again.
+          </div>
+        </div>
+        <div v-if="!isSuccess" class="footer-btn__modal footer-btn__modal2">
+          <div @click="closeResultModal" class="btn1 base-round-border">
+            Try Again
+          </div>
+          <div @click="closeResultModal" class="btn2">Cancel</div>
+        </div>
+      </div>
+
+      <!-- Success -->
+    </Modal>
   </div>
 </template>
 <script setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, computed } from "vue";
+import Modal from "@/components/Modal.vue";
+
 const formState = reactive({
   email: "",
   country: null,
@@ -184,6 +266,33 @@ const formState = reactive({
   address: "",
   address2: "",
 });
+
+// 确认弹窗
+const showModal = ref(false);
+const width = computed(() => {
+  if (window.innerWidth < 768) return "100%";
+  return "500px";
+});
+
+const handleSubmit = () => {
+  console.log("formState", formState);
+
+  showModal.value = true;
+};
+const handleCancel = () => {
+  showModal.value = false;
+};
+// 结果弹窗
+const isSuccess = ref(true);
+const showResult = ref(false);
+const handleConfirm = () => {
+  showModal.value = false;
+  showResult.value = true;
+};
+const closeResultModal = () => {
+  showModal.value = false;
+  showResult.value = false;
+};
 
 const dataSource = [
   {
@@ -329,6 +438,109 @@ const customHeaderCell = (column) => {
     }
   }
 }
+
+//   弹窗1样式
+.confirm-box {
+  color: #fff;
+  .confirm-title {
+    margin-bottom: 40px;
+    font-size: 24px;
+    font-weight: 600;
+    text-align: center;
+  }
+  .confirm-desc {
+    margin: 24px 0;
+    font-size: 16px;
+    font-weight: 400;
+    text-align: center;
+  }
+  .confirm-content {
+    padding: 24px;
+    border-radius: 24px;
+    background-color: #36253d;
+    color: #fff;
+    .confirm-content-title {
+      font-size: 16px;
+      font-weight: 600;
+    }
+    .confirm-content-item {
+      margin-top: 24px;
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      .label {
+        font-weight: 600;
+        min-width: 100px;
+      }
+    }
+  }
+}
+// 弹窗2 样式
+.result-box {
+  color: #fff;
+  text-align: center;
+  .result-title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .result-img {
+    margin: 40px 0;
+    width: 120px;
+    height: 120px;
+  }
+  .result-tips {
+    margin-bottom: 40px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .blue-text {
+    color: #3052fa;
+    font-weight: 600;
+  }
+}
+.footer-btn__modal {
+  margin-top: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: 600;
+  .btn1 {
+    margin-right: 16px;
+    padding: 0 64px;
+    font-weight: 600;
+    color: #ffffff;
+    font-size: 20px;
+    display: inline-block;
+    background-image: linear-gradient(to right, #1f0c27, #1f0c27),
+      linear-gradient(90deg, #1e58fc, #a427eb, #d914e4, #e10fa3, #f10419);
+  }
+  .btn2 {
+    padding: 0 64px;
+    height: 48px;
+    line-height: 48px;
+    display: inline-block;
+    border-radius: 48px;
+    border: 1px solid #3f3f3f;
+  }
+}
+
+.footer-btn__modal2 {
+  text-align: center;
+  .btn1 {
+    font-size: 20px;
+    padding: 0 20px;
+    width: 140px;
+  }
+  .btn2 {
+    font-size: 20px;
+    padding: 0 20px;
+    width: 140px;
+  }
+}
 @media (max-width: 576px) {
   .shipping {
     margin: 12px 24px;
@@ -337,6 +549,16 @@ const customHeaderCell = (column) => {
     }
     .footer-btns {
       display: block;
+      .btn1 {
+        margin-right: 0;
+        margin-bottom: 16px;
+      }
+    }
+  }
+  .confirm-box {
+    .footer-btn__modal {
+      display: block;
+      text-align: center;
       .btn1 {
         margin-right: 0;
         margin-bottom: 16px;
