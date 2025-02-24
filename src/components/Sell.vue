@@ -44,7 +44,7 @@
       <div>Lost the NFTS</div>
     </div>
     <div class="btn3">
-      <div class="btn">SHIP to address</div>
+      <div @click="goPage" class="btn">SHIP to address</div>
       <div>Burn the NFTS</div>
     </div>
   </div>
@@ -52,6 +52,7 @@
 <script setup>
 import { ref, watch } from "vue";
 import useWindow from "@/hooks/useWindow";
+import { useRouter } from "vue-router";
 
 const { isLargeWindow } = useWindow();
 
@@ -211,6 +212,11 @@ const customHeaderCell = (column) => {
       color: "#fff", // 设置 header 文字颜色
     },
   };
+};
+
+const router = useRouter();
+const goPage = () => {
+  router.push("shipping");
 };
 </script>
 

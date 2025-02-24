@@ -46,3 +46,24 @@
 // .fade-leave-to {
 //   opacity: 0;
 // }
+
+/* 全局修改 Select 的字体颜色 */
+.ant-select-selector {
+  color: #fff !important;
+  background: #1f0c27 !important;
+}
+
+/* 全局修改 Select 的 placeholder 颜色 */
+.ant-select-selection-placeholder {
+  color: #717680 !important;
+}
+
+/* 全局修改下拉菜单的背景色 */
+// .ant-select-dropdown {
+//   background-color: #1f0c27 !important;
+// }
+
+/* 全局修改选项的字体颜色 */
+// .ant-select-item-option {
+//   color: #fff !important;
+// }
