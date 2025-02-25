@@ -3,7 +3,7 @@
     <div class="title base-border">Collection’s full item list</div>
 
     <div v-for="(item, index) in imgData" :key="index" class="type-item">
-      <div>
+      <div class="title-box">
         <img :src="item.typeImage" class="item-type__image" />
         <span>{{ item.typeName }}</span>
       </div>
@@ -61,10 +61,13 @@ const imgData = ref([
 
 <style lang="scss" scoped>
 .full {
+  padding: 40px;
+
+  background-color: #1f0c27;
+  border-radius: 32px;
+  margin-top: 60px;
   text-align: center;
-  height: 90vh;
   padding: 20px 0;
-  overflow: auto;
   .title {
     // margin: 0 auto;
     margin-bottom: 40px;
@@ -80,6 +83,11 @@ const imgData = ref([
   }
   .type-item {
     color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    .title-box {
+      margin: 24px;
+    }
     .item-type__image {
       width: 120px;
     }

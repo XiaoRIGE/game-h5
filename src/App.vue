@@ -6,7 +6,7 @@ import Footer from "./layout/Footer.vue";
 <template>
   <div class="main">
     <Header />
-    <div class="main-box">
+    <div class="main-box container">
       <router-view></router-view>
     </div>
     <!-- <router-view v-slot="{ Component }">
@@ -34,6 +34,17 @@ import Footer from "./layout/Footer.vue";
   min-width: 100%;
   .main-box {
     flex: 1;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1200px;
   }
 }
 

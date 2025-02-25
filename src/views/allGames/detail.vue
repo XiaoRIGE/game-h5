@@ -1,5 +1,5 @@
 <template>
-  <div class="detail mx-4">
+  <div class="detail">
     <div class="row">
       <!-- 图片信息 -->
       <div class="col-12 col-sm-6 col-md-6">
@@ -12,12 +12,6 @@
               class="small-img__item"
             >
               <img :src="item" @click="changeCurrentImage(item)" />
-            </div>
-
-            <div class="small-img__item border-item">
-              <div @click="showFull" class="tips-text">
-                Collection's full item list
-              </div>
             </div>
           </div>
         </div>
@@ -108,11 +102,8 @@
         </div>
       </div>
     </div>
-
-    <Modal v-model="showModal">
-      <FullCardList />
-    </Modal>
   </div>
+  <FullCardList />
 </template>
 <script setup>
 import { ref } from "vue";
@@ -120,11 +111,10 @@ import game1 from "@/assets/game1.gif";
 import card1 from "@/assets/game-card1.png";
 import card2 from "@/assets/game-card2.png";
 import card3 from "@/assets/game-card3.png";
-import Modal from "@/components/Modal.vue";
 import FullCardList from "./components/FullCardList.vue";
 import { useRouter } from "vue-router";
 
-const imgList = ref([game1, card1, card2, card3]);
+const imgList = ref([game1, card1, card2, card3, card3]);
 
 const currentImage = ref(game1);
 const changeCurrentImage = (img) => {
@@ -137,12 +127,6 @@ const handleSwitchCurrentTicketValue = (value) => {
   currentTicketValue.value = value;
 };
 
-// 展示全部卡片弹窗
-const showModal = ref(false);
-const showFull = () => {
-  showModal.value = true;
-};
-
 const router = useRouter();
 // 跳转游戏开始界面
 const goPage = (path) => {
@@ -153,7 +137,7 @@ const goPage = (path) => {
 <style lang="scss" scoped>
 .detail {
   padding: 40px;
-  margin: 0 110px;
+  margin-top: 40px;
   background: #1f0c27;
   border-radius: 32px;
   //   图片信息样式
@@ -324,6 +308,9 @@ const goPage = (path) => {
   }
   .select-item {
     margin-bottom: 8px;
+  }
+  .detail .info-box .title {
+    margin-top: 16px;
   }
 }
 </style>
