@@ -22,7 +22,7 @@
       </div>
 
       <div class="right-btn">
-        <div class="round-btn">
+        <div class="round-btn" @click="goPage">
           All games <img src="../assets/link.svg" alt="" />
         </div>
       </div>
@@ -50,7 +50,7 @@
       </div>
 
       <div class="right-btn">
-        <div class="round-btn">
+        <div class="round-btn" @click="goPage">
           All games <img src="../assets/link.svg" alt="" />
         </div>
       </div>
@@ -58,7 +58,15 @@
   </div>
 </template>
 
-<script setup></script>
+<script setup>
+import { useRouter } from "vue-router";
+const router = useRouter();
+const goPage = () => {
+  router.push({
+    name: "allGames",
+  });
+};
+</script>
 
 <style lang="scss" scoped>
 .game-box {
@@ -109,7 +117,9 @@
       opacity: 0.1; /* 只影响背景图像 */
     }
     img {
-      width: 357px;
+      // width: 357px;
+      width: 100%;
+      border-radius: 12px;
     }
 
     .game-desc {

@@ -168,7 +168,7 @@
 
     <div class="footer-btns">
       <div @click="handleSubmit" class="btn1 base-round-border">Submit</div>
-      <div class="btn2">Cancel</div>
+      <div @click="handleBack" class="btn2">Cancel</div>
     </div>
 
     <!-- confirm弹窗 -->
@@ -255,6 +255,8 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 import Modal from "@/components/Modal.vue";
+import { useRouter } from "vue-router";
+const router = useRouter();
 
 const formState = reactive({
   email: "",
@@ -278,6 +280,10 @@ const handleSubmit = () => {
   console.log("formState", formState);
 
   showModal.value = true;
+};
+const handleBack = () => {
+  router.push("sell");
+  //   router.back()//按需选择
 };
 const handleCancel = () => {
   showModal.value = false;

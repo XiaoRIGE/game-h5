@@ -1,14 +1,10 @@
 <template>
   <!-- 在中等屏幕（≥576px ）上显示 -->
 
-  <div
-    id="carouselExample"
-    class="carousel slide banner d-none d-sm-block"
-    data-bs-ride="carousel"
-  >
+  <div id="carouselExample" class="carousel slide banner d-none d-sm-block">
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img :src="bannerList[0].url" class="d-block w-100" alt="..." />
+        <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[0].title }}</div>
           <div class="round-btn">
@@ -17,7 +13,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img :src="bannerList[1].url" class="d-block w-100" alt="..." />
+        <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[1].title }}</div>
           <div class="round-btn">
@@ -26,7 +22,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img :src="bannerList[2].url" class="d-block w-100" alt="..." />
+        <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[2].title }}</div>
           <div class="round-btn">
@@ -35,7 +31,7 @@
         </div>
       </div>
       <div class="carousel-item">
-        <img :src="bannerList[3].url" class="d-block w-100" alt="..." />
+        <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[3].title }}</div>
           <div class="round-btn">
@@ -68,14 +64,10 @@
   </div>
 
   <!-- 在小屏幕（<576px）上显示 -->
-  <div
-    id="carouselExample2"
-    class="carousel slide banner d-block d-sm-none"
-    data-bs-ride="carousel"
-  >
+  <div id="carouselExample2" class="carousel slide banner d-block d-sm-none">
     <div class="carousel-inner">
-      <div class="carousel-item active">
-        <img :src="bannerList[0].url" class="d-block w-100" alt="..." />
+      <div class="carousel-item active small-img-box">
+        <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[0].title }}</div>
           <div class="round-btn">
@@ -83,8 +75,8 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img :src="bannerList[1].url" class="d-block w-100" alt="..." />
+      <div class="carousel-item small-img-box">
+        <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[1].title }}</div>
           <div class="round-btn">
@@ -92,8 +84,8 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img :src="bannerList[2].url" class="d-block w-100" alt="..." />
+      <div class="carousel-item small-img-box">
+        <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[2].title }}</div>
           <div class="round-btn">
@@ -101,8 +93,8 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item">
-        <img :src="bannerList[3].url" class="d-block w-100" alt="..." />
+      <div class="carousel-item small-img-box">
+        <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[3].title }}</div>
           <div class="round-btn">
@@ -115,7 +107,8 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import * as bootstrap from "bootstrap";
 
 import banner_1 from "@/assets/banner_1.png";
 import banner_2 from "@/assets/banner_2.png";
@@ -124,26 +117,46 @@ import banner_4 from "@/assets/banner_4.png";
 
 const bannerList = ref([
   {
-    url: banner_4,
-    title: "EVENT #4",
+    url: banner_2,
+    title: "EVENT #1",
     id: Math.random(),
   },
   {
     url: banner_3,
+    title: "EVENT #2",
+    id: Math.random(),
+  },
+
+  {
+    url: banner_1,
     title: "EVENT #3",
     id: Math.random(),
   },
   {
-    url: banner_2,
-    title: "EVENT #2",
-    id: Math.random(),
-  },
-  {
-    url: banner_1,
-    title: "EVENT #1",
+    url: banner_4,
+    title: "EVENT #4",
     id: Math.random(),
   },
 ]);
+
+const init = () => {
+  const innerWidth = window.innerWidth;
+  const myCarouselElement =
+    innerWidth > 576
+      ? document.querySelector("#carouselExample")
+      : document.querySelector("#carouselExample2");
+
+  const carousel = new bootstrap.Carousel(myCarouselElement, {
+    interval: 4000,
+    touch: false,
+  });
+
+  carousel.cycle();
+};
+
+onMounted(() => {
+  init();
+});
 </script>
 
 <style lang="scss" scoped>
@@ -172,6 +185,7 @@ const bannerList = ref([
       left: 0;
       color: #fff;
       font-size: 1.5rem;
+      z-index: 9999;
     }
   }
   .round-btn {
@@ -181,5 +195,26 @@ const bannerList = ref([
     border-radius: 20px;
     border: 1px solid #fff;
   }
+}
+// .small-img-box {
+//   position: relative;
+//   &::after {
+//     content: "";
+//     position: absolute;
+//     display: block;
+//     width: 412px;
+//     height: 400px;
+//     left: 0;
+//     top: 0;
+
+//     border-radius: 16px;
+//     background-image: linear-gradient(45deg, black, transparent);
+//     z-index: 1111;
+//   }
+// }
+.small-img-box > img {
+  height: 400px;
+  object-fit: cover;
+  border-radius: 16px;
 }
 </style>

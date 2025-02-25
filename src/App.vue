@@ -6,7 +6,6 @@ import Footer from "./layout/Footer.vue";
 <template>
   <div class="main">
     <Header />
-    <!-- <Content class="content" /> -->
     <router-view></router-view>
     <!-- <router-view v-slot="{ Component }">
       <keep-alive>
@@ -19,10 +18,8 @@ import Footer from "./layout/Footer.vue";
 
 <style lang="scss" scoped>
 .main {
-  /* Landing page */
-
   position: relative;
-  width: 100vw;
+  width: 100%;
 
   display: flex;
   flex-direction: column;
@@ -31,8 +28,8 @@ import Footer from "./layout/Footer.vue";
 
   background: url("./assets/bg.png") no-repeat 100% 100%;
   background-size: cover;
-  min-height: 100vh;
-  min-width: 100vw;
+  min-height: 100%;
+  min-width: 100%;
   .content {
     flex: 1;
   }

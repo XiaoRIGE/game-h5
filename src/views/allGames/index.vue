@@ -105,4 +105,12 @@ const games = ref([
     margin: 0 auto;
   }
 }
+
+@media (max-width: 576px) {
+  .all {
+    .title {
+      margin: 16px 0;
+    }
+  }
+}
 </style>

@@ -6,7 +6,7 @@
 
       <div class="item-box">
         <div class="item me-4">
-          <img src="../assets/market1.png" alt="" />
+          <img src="../assets/market1.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -14,7 +14,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market2.png" alt="" />
+          <img src="../assets/market2.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -22,7 +22,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market3.png" alt="" />
+          <img src="../assets/market3.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -31,7 +31,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market4.png" alt="" />
+          <img src="../assets/market4.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -39,7 +39,7 @@
         </div>
 
         <div class="item">
-          <img src="../assets/market5.png" alt="" />
+          <img src="../assets/market5.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -60,7 +60,7 @@
 
       <div class="item-box">
         <div class="item me-4">
-          <img src="../assets/market1.png" alt="" />
+          <img src="../assets/market1.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -68,7 +68,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market2.png" alt="" />
+          <img src="../assets/market2.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -76,7 +76,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market3.png" alt="" />
+          <img src="../assets/market3.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -85,7 +85,7 @@
         </div>
 
         <div class="item me-4">
-          <img src="../assets/market4.png" alt="" />
+          <img src="../assets/market4.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -93,7 +93,7 @@
         </div>
 
         <div class="item">
-          <img src="../assets/market5.png" alt="" />
+          <img src="../assets/market5.gif" alt="" />
           <span class="market-desc"
             >2007 EX Power Keepers #1 Aggrpn -Holo(CGC 9)</span
           >
@@ -143,6 +143,9 @@
     flex-direction: column;
     position: relative;
     border-radius: 12px;
+    img {
+      width: 100%;
+    }
 
     &::before {
       content: "";
