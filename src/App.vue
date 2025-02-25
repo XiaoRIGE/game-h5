@@ -6,7 +6,9 @@ import Footer from "./layout/Footer.vue";
 <template>
   <div class="main">
     <Header />
-    <router-view></router-view>
+    <div class="main-box">
+      <router-view></router-view>
+    </div>
     <!-- <router-view v-slot="{ Component }">
       <keep-alive>
         <component :is="Component" />
@@ -28,9 +30,9 @@ import Footer from "./layout/Footer.vue";
 
   background: url("./assets/bg.png") no-repeat 100% 100%;
   background-size: cover;
-  min-height: 100%;
+  min-height: 100vh;
   min-width: 100%;
-  .content {
+  .main-box {
     flex: 1;
   }
 }

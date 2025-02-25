@@ -1,87 +1,36 @@
 <template>
-  <div class="market-box">
-    <!-- 在中等屏幕（≥576px 且 <992px）上显示 -->
-    <div class="market d-none d-sm-block">
+  <div class="winner-box">
+    <div class="winner">
       <div class="title base-border">LIVE WINNERS</div>
 
-      <!-- 列表 -->
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" style="text-align: left; padding-left: 16px">
-              ITEM
-            </th>
-            <th scope="col">PARITY</th>
-            <th scope="col">PRICE</th>
-            <th scope="col">WINNER</th>
-            <th scope="col">TIME</th>
-          </tr>
-        </thead>
-        <tbody class="table-dark table_body">
-          <tr v-for="(item, index) in tableList" :key="index">
-            <td scope="row">
-              <div class="flex-box">
-                <img :src="item.itemImg" alt="" />
-                <div>
-                  <div class="item-name">{{ item.itemName }}</div>
-                  <div class="item-type">{{ item.itemType }}</div>
+      <a-table
+        :dataSource="tableList"
+        :columns="columns"
+        :bordered="false"
+        :pagination="false"
+        :customRow="customCell"
+        :customHeaderRow="customHeaderCell"
+        :scroll="{ y: 400 }"
+      >
+        <template #bodyCell="{ column, record }">
+          <template v-if="column.key === 'item'">
+            <div class="d-flex align-items-center">
+              <img src="../assets/item1.png" alt="" />
+              <div>
+                <div class="item-desc d-none d-md-block">
+                  {{ record.itemName }}
+                </div>
+                <div class="item-desc d-none d-md-block">
+                  {{ record.itemType }}
                 </div>
               </div>
-            </td>
-            <td>{{ item.rarityType }}</td>
-            <td>{{ item.price }}</td>
-            <td>
-              <div class="flex-box">
-                <img src="../assets/user.png" class="user-icon" />
-                <span>{{ item.winner }}</span>
-              </div>
-            </td>
-            <td>{{ item.time }}</td>
-          </tr>
-        </tbody>
-      </table>
+            </div>
+          </template>
+        </template>
+      </a-table>
 
-      <div class="right-btn">
-        <div class="round-btn">
-          See all <img src="../assets/link.svg" alt="" />
-        </div>
-      </div>
-    </div>
-
-    <!-- 在小屏幕（<576px）上显示 -->
-    <div class="market market-small d-block d-sm-none">
-      <div class="title base-border">LIVE WINNERS</div>
-
-      <!-- 列表 -->
-      <table class="table">
-        <thead class="table-dark">
-          <tr>
-            <th scope="col" style="text-align: left; margin-left: 16px">
-              ITEM
-            </th>
-            <th scope="col" style="text-align: left; margin-left: 16px">
-              PARITY
-            </th>
-            <th scope="col" style="text-align: left; margin-left: 16px">
-              WINNER
-            </th>
-          </tr>
-        </thead>
-        <tbody class="table-dark table_body">
-          <tr v-for="(item, index) in tableList" :key="index">
-            <td scope="row">
-              <img :src="item.itemImg" alt="" />
-            </td>
-            <td>{{ item.rarityType }}</td>
-            <td>
-              <span>{{ item.winner }}</span>
-            </td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="right-btn">
-        <div class="round-btn">
+      <div v-if="showBottomBtn" class="right-btn">
+        <div @click="goPage" class="round-btn">
           See all <img src="../assets/link.svg" alt="" />
         </div>
       </div>
@@ -90,83 +39,206 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref, watch } from "vue";
+import { useRouter } from "vue-router";
+import useWindow from "@/hooks/useWindow";
 
 import item1 from "@/assets/item1.png";
 import item2 from "@/assets/item2.png";
 import item3 from "@/assets/item3.png";
 
-const tableList = ref([
+const { isLargeWindow } = useWindow();
+const columns = ref([
   {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item1,
-
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
+    title: "ITEM",
+    dataIndex: "item",
+    key: "item",
+    width: "60%",
   },
   {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item2,
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
+    title: "RARITY",
+    dataIndex: "rarityType",
+    key: "rarityType",
   },
   {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item3,
-
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
+    title: "PRICE",
+    dataIndex: "price",
+    key: "price",
   },
   {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item2,
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
+    title: "WINNER",
+    key: "winner",
+    dataIndex: "winner",
   },
   {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item1,
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
-  },
-  {
-    id: Math.random(),
-    itemName: "2022 Panini NBA Hoops Jam-...",
-    itemType: "GACHA",
-    itemImg: item1,
-    rarityType: "SSR",
-    price: "300 USDC",
-    winner: "Bob",
-    time: "02/17/2025 09:19:29",
+    title: "TIME",
+    key: "time",
+    dataIndex: "time",
   },
 ]);
+
+watch(
+  isLargeWindow,
+  (newVal) => {
+    if (newVal) {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+          width: "60%",
+        },
+        {
+          title: "RARITY",
+          dataIndex: "rarityType",
+          key: "rarityType",
+        },
+        {
+          title: "PRICE",
+          dataIndex: "price",
+          key: "price",
+        },
+        {
+          title: "WINNER",
+          key: "winner",
+          dataIndex: "winner",
+        },
+        {
+          title: "TIME",
+          key: "time",
+          dataIndex: "time",
+        },
+      ];
+    } else {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+        },
+        {
+          title: "RARITY",
+          dataIndex: "rarityType",
+          key: "rarityType",
+        },
+
+        {
+          title: "WINNER",
+          key: "winner",
+          dataIndex: "winner",
+        },
+      ];
+    }
+  },
+  {
+    immediate: true,
+  }
+);
+
+defineProps({
+  tableList: {
+    type: Array,
+    default: () => {
+      return [
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item1,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item2,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item3,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item1,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item1,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+        {
+          id: Math.random(),
+          itemName: "2022 Panini NBA Hoops Jam-...",
+          itemType: "GACHA",
+          itemImg: item1,
+          rarityType: "SSR",
+          price: "300 USDC",
+          winner: "Suyanne",
+          time: "02/17/2025 09:19:29",
+        },
+      ];
+    },
+  },
+  showBottomBtn: {
+    type: Boolean,
+    default: true,
+  },
+});
+
+const router = useRouter();
+const goPage = () => {
+  router.push({
+    name: "liveWinners",
+  });
+};
+
+function customCell(record, rowIndex) {
+  return {
+    style: {
+      backgroundColor: "#1F0C27", // 设置 body 背景色
+      color: "#fff", // 设置 body 文字颜色
+    },
+  };
+}
+const customHeaderCell = (column) => {
+  return {
+    style: {
+      backgroundColor: "#1E1E1E", // 设置 header 背景色
+      color: "#fff", // 设置 header 文字颜色
+    },
+  };
+};
 </script>
 
 <style lang="scss" scoped>
-.market-box {
+.winner-box {
   margin: 32px 0;
 }
-.market {
+.winner {
   margin: 0 32px;
   padding: 40px;
   background: rgba(45, 16, 57, 0.3);
@@ -253,60 +325,12 @@ const tableList = ref([
   }
 }
 
-.market-small {
-  .title {
-    display: inline-block;
-    margin-bottom: 24px;
-    font-size: 24px;
-    font-weight: 600;
-  }
-
-  //   表格样式
-  thead {
-    font-size: 16px;
-    border-color: #000000;
-    // background: #1e1e1e;
-  }
-  thead tr {
-    height: 24px;
-    font-size: 14px;
-    text-align: left;
-    line-height: 24px;
-    border-color: #000000;
-  }
-  thead th {
-    background: none;
-    height: 24px;
-    padding: 0;
-  }
-
-  tbody td {
-    height: 24px;
-    font-size: 14px;
-    text-align: left;
-    line-height: 80px;
-    border-color: #000000;
-    background: #1e1e1e;
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-  .table_body {
-    height: 550px;
-    overflow: auto;
-  }
-
-  .right-btn {
-    padding-top: 16px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-  .round-btn {
-    font-size: 0.6rem;
-    padding: 2px 6px;
-    display: inline-block;
-    border-radius: 20px;
-    border: 1px solid #fff;
+@media (max-width: 576px) {
+  .winner {
+    .title {
+      font-size: 24px;
+      margin-bottom: 24px;
+    }
   }
 }
 </style>

@@ -25,6 +25,11 @@ const router = createRouter({
       component: () => import("../views/allGames/detail.vue"),
     },
     {
+      path: "/live-winners",
+      name: "liveWinners",
+      component: () => import("../views/liveWinners/index.vue"),
+    },
+    {
       path: "/play",
       name: "play",
       component: () => import("../views/play/index.vue"),
