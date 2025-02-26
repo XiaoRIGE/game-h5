@@ -5,17 +5,17 @@
       <div class="title base-border">GACHA GAMES</div>
 
       <div class="item-box">
-        <div class="item me-4">
+        <div @click="goDetailPage" class="item me-4">
           <img src="../assets/game1.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
-        <div class="item me-4">
+        <div @click="goDetailPage" class="item me-4">
           <img src="../assets/game2.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
-        <div class="item">
+        <div @click="goDetailPage" class="item">
           <img src="../assets/game3.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
@@ -33,17 +33,17 @@
       <div class="title base-border">GACHA GAMES</div>
 
       <div class="item-box">
-        <div class="item me-4">
+        <div @click="goDetailPage" class="item me-4">
           <img src="../assets/game1.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
-        <div class="item me-4">
+        <div @click="goDetailPage" class="item me-4">
           <img src="../assets/game2.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
 
-        <div class="item">
+        <div @click="goDetailPage" class="item">
           <img src="../assets/game3.gif" alt="" />
           <span class="game-desc">DRAGON BALL FIGURE COLLECTION</span>
         </div>
@@ -64,6 +64,11 @@ const router = useRouter();
 const goPage = () => {
   router.push({
     name: "allGames",
+  });
+};
+const goDetailPage = () => {
+  router.push({
+    name: "gameDetail",
   });
 };
 </script>

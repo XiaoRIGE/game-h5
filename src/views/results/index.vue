@@ -3,13 +3,23 @@
     <Result />
 
     <div class="footer-btns">
-      <div class="btn1 base-round-border">Spin again</div>
+      <div @click="handleAgain" class="btn1 base-round-border">Spin again</div>
       <div class="btn2">My Inventory</div>
     </div>
   </div>
 </template>
 <script setup>
+import { useRouter } from "vue-router";
+
 import Result from "@/components/Result.vue";
+
+const router = useRouter();
+
+const handleAgain = () => {
+  router.push({
+    name: "play",
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -52,6 +62,17 @@ import Result from "@/components/Result.vue";
     display: inline-block;
     border-radius: 48px;
     border: 1px solid #3f3f3f;
+  }
+}
+
+@media (max-width: 576px) {
+  .footer-btns {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    .btn1 {
+      margin-bottom: 16px;
+    }
   }
 }
 </style>

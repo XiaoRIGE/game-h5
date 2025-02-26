@@ -42,7 +42,7 @@
             <div @click="goPage('liveWinners')" class="menu-item border-bo">
               LIVE WINNERS HISTORY
             </div>
-            <div class="menu-item">FAQ</div>
+            <div @click="goPage('home')" class="menu-item">FAQ</div>
           </div>
           <div @click="goPage('about')" class="desc">ABOUT US</div>
         </div>
@@ -90,7 +90,7 @@
               <div @click="goPage('liveWinners')" class="menu-item border-bo">
                 LIVE WINNERS HISTORY
               </div>
-              <div class="menu-item">FAQ</div>
+              <div @click="goPage('home')" class="menu-item">FAQ</div>
             </div>
             <div
               @click="goPage('about')"

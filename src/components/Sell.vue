@@ -141,62 +141,68 @@ const columns = ref([
   },
 ]);
 
-watch(isLargeWindow, (newVal) => {
-  if (newVal) {
-    columns.value = [
-      {
-        title: "ITEM",
-        dataIndex: "item",
-        key: "item",
-      },
+watch(
+  isLargeWindow,
+  (newVal) => {
+    if (newVal) {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+        },
 
-      {
-        title: "USDC PRICE",
-        dataIndex: "usdcPrice",
-        key: "usdcPrice",
-      },
-      {
-        title: "CANDY PRICE",
-        key: "candyPrice",
-        dataIndex: "candyPrice",
-      },
-      {
-        title: "RARITY",
-        dataIndex: "rarity",
-        key: "rarity",
-      },
-      {
-        title: "QUANTITY",
-        key: "quantity",
-        dataIndex: "quantity",
-      },
-      {
-        title: "ACTION",
-        key: "action",
-        dataIndex: "action",
-      },
-    ];
-  } else {
-    columns.value = [
-      {
-        title: "ITEM",
-        dataIndex: "item",
-        key: "item",
-      },
+        {
+          title: "USDC PRICE",
+          dataIndex: "usdcPrice",
+          key: "usdcPrice",
+        },
+        {
+          title: "CANDY PRICE",
+          key: "candyPrice",
+          dataIndex: "candyPrice",
+        },
+        {
+          title: "RARITY",
+          dataIndex: "rarity",
+          key: "rarity",
+        },
+        {
+          title: "QUANTITY",
+          key: "quantity",
+          dataIndex: "quantity",
+        },
+        {
+          title: "ACTION",
+          key: "action",
+          dataIndex: "action",
+        },
+      ];
+    } else {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+        },
 
-      {
-        title: "QUANTITY",
-        key: "quantity",
-        dataIndex: "quantity",
-      },
-      {
-        title: "ACTION",
-        key: "action",
-        dataIndex: "action",
-      },
-    ];
+        {
+          title: "QUANTITY",
+          key: "quantity",
+          dataIndex: "quantity",
+        },
+        {
+          title: "ACTION",
+          key: "action",
+          dataIndex: "action",
+        },
+      ];
+    }
+  },
+  {
+    immediate: true,
   }
-});
+);
 function customCell(record, rowIndex) {
   return {
     style: {

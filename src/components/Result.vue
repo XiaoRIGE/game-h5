@@ -25,9 +25,7 @@
               <template v-if="column.key === 'item'">
                 <div class="d-flex align-items-center">
                   <img src="../assets/item1.png" alt="" />
-                  <span class="item-desc d-none d-md-block">{{
-                    record.item
-                  }}</span>
+                  <span class="item-desc d-none d-md-block">{{ record.item }}</span>
                 </div>
               </template>
             </template>
@@ -41,17 +39,12 @@
               <div @click="handleClear" class="right">Clear all</div>
             </div>
             <div class="select-desc">
-              Sell for SOL/ Exchanging for candies/ Burn and ship to your
-              address
+              Sell for SOL/ Exchanging for candies/ Burn and ship to your address
             </div>
           </div>
 
           <div class="item-list">
-            <div
-              v-for="item in state.selectedRows"
-              :key="item.key"
-              class="item-box"
-            >
+            <div v-for="item in state.selectedRows" :key="item.key" class="item-box">
               <div class="left">
                 <img src="../assets/item1.png" class="img" />
                 <div class="text-box">
@@ -64,11 +57,7 @@
                     <template #addonBefore>
                       <span
                         class="p-2"
-                        @click="
-                          item.quantity > 0
-                            ? item.quantity--
-                            : (item.quantity = 0)
-                        "
+                        @click="item.quantity > 0 ? item.quantity-- : (item.quantity = 0)"
                         >-</span
                       >
                     </template>
@@ -79,11 +68,7 @@
                 </div>
               </div>
               <div class="right">
-                <img
-                  @click="handleDelete(item.key)"
-                  src="../assets/x.svg"
-                  alt=""
-                />
+                <img @click="handleDelete(item.key)" src="../assets/x.svg" alt="" />
               </div>
             </div>
           </div>
@@ -390,7 +375,7 @@ const goSell = () => {
 
 @media (max-width: 576px) {
   .result {
-    height: 80vh;
+    // height: 80vh;
     overflow: auto;
     .select-box {
       margin-top: 20px;
