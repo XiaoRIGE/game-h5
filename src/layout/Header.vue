@@ -134,7 +134,7 @@
           <img @click="handleShowUserInfo" src="../assets/header-avatar.svg" alt="" />
 
           <!-- 个人信息弹窗  弹窗面板展示-->
-          <Account v-if="showUserInfoModal" />
+          <Account v-if="showUserInfoModal" @closeAccount="handleClose" />
         </div>
       </div>
 
@@ -159,7 +159,7 @@
             </div>
           </div>
           <div class="drawer-body">
-            <Account />
+            <Account @closeAccount="handleClose" />
           </div>
         </div>
       </div>

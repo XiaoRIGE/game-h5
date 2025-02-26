@@ -7,7 +7,10 @@
     </div>
 
     <div class="first-modal">
-      <div class="money-item d-flex justify-content-between align-items-center">
+      <div
+        @click="handleShowWallet"
+        class="money-item d-flex justify-content-between align-items-center"
+      >
         <div class="left d-flex justify-content-between align-items-center">
           <img src="../assets/header-wallet.svg" alt="" />
           <div class="detail-box">
@@ -87,8 +90,118 @@
       <img src="../assets/log-out.svg" alt="" />
     </div>
   </div>
+
+  <!-- <Adapter :show="showWallet" /> -->
+
+  <!-- wallets 列表 -->
+  <div>
+    <Modal v-model="showWallet" width="720px">
+      <div class="wallets">
+        <div class="title base-border">WALLETS</div>
+
+        <!-- 钱包1 -->
+        <div class="wallets-item wallets-item-border">
+          <div class="d-flex align-item-center justify-content-between">
+            <span class="fs-20">
+              Wallet 1
+              <span class="fs-16 bg">Current wallet</span>
+            </span>
+
+            <span class="fs-16 color-blue">
+              <img src="../assets/disconnect.svg" />
+              Disconnect Wallet
+            </span>
+          </div>
+
+          <div class="money-item d-flex justify-content-between align-items-center">
+            <div class="left d-flex justify-content-between align-items-center">
+              <img src="../assets/header-wallet.svg" alt="" />
+              <div class="detail-box">
+                <div>External Wallet</div>
+                <div class="desc-info">xxx...</div>
+              </div>
+            </div>
+            <div class="right">1.0001 SOL</div>
+          </div>
+        </div>
+
+        <!-- 钱包2 -->
+        <div class="wallets-item">
+          <div class="d-flex align-item-center justify-content-between">
+            <span class="fs-20"> Wallet 2 </span>
+          </div>
+
+          <div class="money-item d-flex justify-content-between align-items-center">
+            <div class="left d-flex justify-content-between align-items-center">
+              <img src="../assets/header-wallet.svg" alt="" />
+              <div class="detail-box">
+                <div>Internal Wallet</div>
+                <div class="desc-info">xxx...</div>
+              </div>
+            </div>
+            <div class="right">1.0001 SOL</div>
+          </div>
+        </div>
+
+        <div
+          @click="handleShowAddWalletModal"
+          class="add-btn d-flex justify-content-center align-items-center"
+        >
+          <span> Add Wallet</span>
+          <img src="../assets/header-plus.svg" alt="" />
+        </div>
+      </div>
+    </Modal>
+  </div>
+
+  <!-- add wallet modal -->
+
+  <div>
+    <Modal v-model="showAddWalletModal" width="440px">
+      <div class="add-wallet-box">
+        <div class="wallet-box__title">Add Wallet</div>
+        <div class="wallet-box__desc">
+          Change your wallet on the extension and choose the corresponding:
+        </div>
+        <img src="../assets/button-soft-p.svg" class="mb-24" />
+        <img src="../assets/button-soft-s.svg" class="mb-24" />
+        <img src="../assets/button-soft-b.svg" class="mb-24" />
+
+        <div class="wallet-box__desc">
+          Link an email for more login methods (Unavailable if your account already linked
+          to an email)
+        </div>
+
+        <div class="footer-login-btn">
+          <img src="../assets/mail.svg" alt="" />
+          <span> Login using email </span>
+        </div>
+      </div>
+    </Modal>
+  </div>
 </template>
-<script setup></script>
+<script setup>
+import { ref } from "vue";
+// import Adapter from "@/components/Adapter.vue";
+import Modal from "@/components/Modal.vue";
+
+const emits = defineEmits(["closeAccount"]);
+
+// 是否展示钱包列表
+const showWallet = ref(false);
+const handleShowWallet = () => {
+  showWallet.value = true;
+
+  // emits("closeAccount");
+};
+
+// 是否展示添加钱包弹窗
+const showAddWalletModal = ref(false);
+const handleShowAddWalletModal = () => {
+  showAddWalletModal.value = true;
+  showWallet.value = false;
+};
+</script>
 
 <style lang="scss" scoped>
 .userInfo-box {
@@ -99,7 +212,7 @@
   background: #1f0c27;
   border-radius: 32px;
   border: 1px solid #3f3f3f;
-  z-index: 9999;
+  z-index: 1055;
   text-align: left;
   .user-name {
     text-align: center;
@@ -159,7 +272,7 @@
     top: 0;
     right: 0;
     border: none;
-    padding: 0 16px;
+    padding: 0;
     .first-modal {
       margin-bottom: 24px;
       padding-bottom: 0;
@@ -174,6 +287,140 @@
         width: 32px;
       }
     }
+  }
+}
+</style>
+
+<style lang="scss">
+// 钱包列表样式
+.wallets {
+  text-align: center;
+  .title {
+    margin-bottom: 20px;
+    display: inline-block;
+    color: #fff;
+    font-size: 32px;
+    line-height: 40px;
+    font-weight: 600;
+  }
+  .wallets-item {
+    margin-top: 40px;
+    color: #fff;
+    padding-bottom: 40px;
+    .fs-20 {
+      font-size: 20px;
+      font-weight: 600;
+      margin-right: 16px;
+    }
+    .fs-16 {
+      font-size: 16px;
+      font-weight: 400;
+    }
+    .bg {
+      display: inline-block;
+      padding: 8px;
+      border-radius: 28px;
+      background-color: #36253d;
+    }
+    .color-blue {
+      display: inline-block;
+      margin-left: 4px;
+      color: #3052fa;
+    }
+    .money-item {
+      margin-top: 24px;
+      margin-bottom: 16px;
+      color: #fff;
+      width: 100%;
+      line-height: 20px;
+      font-size: 20px;
+      font-weight: 400;
+      text-align: left;
+      .detail-box {
+        margin-left: 8px;
+        color: #606060;
+      }
+      .desc-info {
+        font-size: 16px;
+        color: #fff;
+      }
+      .candy-btn {
+        padding: 14px 12px;
+        border-radius: 48px;
+        background-color: #212121;
+      }
+      .left > img {
+        width: 48px;
+      }
+    }
+  }
+  .wallets-item-border {
+    border-bottom: 1px solid #3f3f3f;
+  }
+  .add-btn {
+    padding: 14px 16px;
+    border-radius: 48px;
+    border: 1px solid #3f3f3f;
+    max-width: 180px;
+    margin: 0 auto;
+    font-size: 16px;
+    font-weight: 600;
+    img {
+      margin-left: 8px;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .wallets {
+    padding-bottom: 200px;
+    .title {
+      font-size: 24px;
+      margin-bottom: 0;
+    }
+    .wallets-item {
+      .fs-20 {
+        font-size: 16px;
+      }
+      .fs-16 {
+        font-size: 12px;
+      }
+      .money-item {
+        font-size: 16px;
+        margin-bottom: 0;
+      }
+    }
+    .add-btn {
+      color: #fff;
+    }
+  }
+}
+
+// 新增钱包样式
+.add-wallet-box {
+  color: #fff;
+  text-align: center;
+  .wallet-box__title {
+    font-size: 24px;
+    font-weight: 600;
+  }
+  .wallet-box__desc {
+    margin-top: 40px;
+    margin-bottom: 24px;
+    font-size: 16px;
+    font-weight: 400;
+  }
+  .mb-24 {
+    margin-bottom: 24px;
+  }
+
+  .footer-login-btn {
+    padding: 18px 0;
+    border-radius: 48px;
+    border: 1px solid #3f3f3f;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
   }
 }
 </style>
