@@ -21,7 +21,10 @@
         <div class="right">1.0001 SOL</div>
       </div>
 
-      <div class="money-item d-flex justify-content-between align-items-center">
+      <div
+        @click="handleShowCandy"
+        class="money-item d-flex justify-content-between align-items-center"
+      >
         <div class="left d-flex justify-content-between align-items-center">
           <img src="../assets/header-candy.svg" alt="" />
           <div class="detail-box">
@@ -91,8 +94,6 @@
     </div>
   </div>
 
-  <!-- <Adapter :show="showWallet" /> -->
-
   <!-- wallets 列表 -->
   <div>
     <Modal v-model="showWallet" width="720px">
@@ -113,7 +114,9 @@
             </span>
           </div>
 
-          <div class="money-item d-flex justify-content-between align-items-center">
+          <div
+            class="money-item d-flex justify-content-between align-items-center"
+          >
             <div class="left d-flex justify-content-between align-items-center">
               <img src="../assets/header-wallet.svg" alt="" />
               <div class="detail-box">
@@ -131,7 +134,9 @@
             <span class="fs-20"> Wallet 2 </span>
           </div>
 
-          <div class="money-item d-flex justify-content-between align-items-center">
+          <div
+            class="money-item d-flex justify-content-between align-items-center"
+          >
             <div class="left d-flex justify-content-between align-items-center">
               <img src="../assets/header-wallet.svg" alt="" />
               <div class="detail-box">
@@ -168,8 +173,8 @@
         <img src="../assets/button-soft-b.svg" class="mb-24" />
 
         <div class="wallet-box__desc">
-          Link an email for more login methods (Unavailable if your account already linked
-          to an email)
+          Link an email for more login methods (Unavailable if your account
+          already linked to an email)
         </div>
 
         <div class="footer-login-btn">
@@ -179,11 +184,16 @@
       </div>
     </Modal>
   </div>
+
+  <!-- 钱包弹窗 -->
+  <Modal v-model="showCandy" width="500px">
+    <Candy />
+  </Modal>
 </template>
 <script setup>
 import { ref } from "vue";
-// import Adapter from "@/components/Adapter.vue";
 import Modal from "@/components/Modal.vue";
+import Candy from "@/components/Candy.vue";
 
 const emits = defineEmits(["closeAccount"]);
 
@@ -199,6 +209,13 @@ const handleShowWallet = () => {
 const showAddWalletModal = ref(false);
 const handleShowAddWalletModal = () => {
   showAddWalletModal.value = true;
+  showWallet.value = false;
+};
+
+// 是否展示candy弹窗
+const showCandy = ref(false);
+const handleShowCandy = () => {
+  showCandy.value = true;
   showWallet.value = false;
 };
 </script>

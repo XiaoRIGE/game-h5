@@ -29,7 +29,11 @@
           <div class="drawer-content small-box">
             <div class="drawer-header">
               <div class="modal-header flex-end">
-                <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
+                <img
+                  @click="handleClose"
+                  src="../assets/simpleClose.svg"
+                  alt=""
+                />
               </div>
             </div>
             <div class="drawer-body">
