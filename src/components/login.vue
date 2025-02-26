@@ -9,11 +9,7 @@
         <div class="modal-dialog">
           <div class="modal-content login-box">
             <div class="modal-header flex-end">
-              <img
-                @click="handleClose"
-                src="../assets/simpleClose.svg"
-                alt=""
-              />
+              <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
             </div>
             <div class="title">TOKYO STUPID GAME$</div>
             <div class="modal-body form-box">
@@ -47,9 +43,7 @@
 
               <!-- by web3 -->
               <div class="web3-form base-form">
-                <div class="base-form__title">
-                  Choose your web3 wallet to log in
-                </div>
+                <div class="base-form__title">Choose your web3 wallet to log in</div>
 
                 <img src="../assets/button-soft-p.svg" alt="" />
                 <img src="../assets/button-soft-s.svg" alt="" />
@@ -89,9 +83,7 @@
               aria-label="default input example"
             />
 
-            <div @click="handleNext" class="round-btn base-round-border">
-              Continue
-            </div>
+            <div @click="handleNext" class="round-btn base-round-border">Continue</div>
 
             <div class="flex-center">
               <div class="google-btn">
@@ -109,9 +101,7 @@
 
           <!-- by web3 -->
           <div class="web3-form base-form">
-            <div class="base-form__title">
-              Choose your web3 wallet to log in
-            </div>
+            <div class="base-form__title">Choose your web3 wallet to log in</div>
 
             <div class="d-flex justify-content-between">
               <img src="../assets/button-soft-mini-p.svg" alt="" />
@@ -120,9 +110,7 @@
             </div>
           </div>
         </div>
-        <div class="footer">
-          By logging in I agree with Terms & Privacy Policy
-        </div>
+        <div class="footer">By logging in I agree with Terms & Privacy Policy</div>
       </div>
     </div>
 
@@ -409,51 +397,51 @@ const handleSubmit = () => {
 .column {
   flex-direction: column;
 }
-/* 模态框样式 */
-.modal {
-  background-color: rgba(0, 0, 0, 0.5);
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
+// /* 模态框样式 */
+// .modal {
+//   background-color: rgba(0, 0, 0, 0.5);
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }
 
-/* 底部抽屉样式 */
-.drawer {
-  position: fixed;
-  bottom: -100%;
-  left: 0;
-  width: 100%;
-  //   background-color: white;
-  transition: bottom 0.3s ease;
-  z-index: 1050;
-}
+// /* 底部抽屉样式 */
+// .drawer {
+//   position: fixed;
+//   bottom: -100%;
+//   left: 0;
+//   width: 100%;
+//   //   background-color: white;
+//   transition: bottom 0.3s ease;
+//   z-index: 1050;
+// }
 
-.drawer.open {
-  bottom: 0;
-}
+// .drawer.open {
+//   bottom: 0;
+// }
 
-.drawer-content {
-  padding: 24px 40px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
-  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
-}
+// .drawer-content {
+//   padding: 24px 40px;
+//   border-top-left-radius: 10px;
+//   border-top-right-radius: 10px;
+//   box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+// }
 
-/* 蒙层样式 */
-.overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-color: rgba(0, 0, 0, 0.5);
-  z-index: 1040;
-}
+// /* 蒙层样式 */
+// .overlay {
+//   position: fixed;
+//   top: 0;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   background-color: rgba(0, 0, 0, 0.5);
+//   z-index: 1040;
+// }
 
 @media (min-width: 576px) {
   .modal-dialog {

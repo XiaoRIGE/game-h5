@@ -37,9 +37,7 @@
           </div>
 
           <div class="menu-box">
-            <div @click="goPage('allGames')" class="menu-item border-bo">
-              GACHA GAMES
-            </div>
+            <div @click="goPage('allGames')" class="menu-item border-bo">GACHA GAMES</div>
             <div class="menu-item border-bo">MARKETPLACE</div>
             <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
             <div class="menu-item">FAQ</div>
@@ -63,9 +61,7 @@
             aria-label="Close"
           />
 
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
-            TOKYO STUPID GAMES
-          </h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">TOKYO STUPID GAMES</h5>
           <div></div>
         </div>
         <div class="offcanvas-body">
@@ -84,11 +80,7 @@
               </div>
             </div>
 
-            <div
-              class="menu-box"
-              data-bs-toggle="offcanvas"
-              href="#offcanvasExample"
-            >
+            <div class="menu-box" data-bs-toggle="offcanvas" href="#offcanvasExample">
               <div @click="goPage('allGames')" class="menu-item border-bo">
                 GACHA GAMES
               </div>
@@ -112,8 +104,8 @@
     <span class="title">TOKYO $TUPID GAMES</span>
 
     <!-- 右侧按钮 -->
-    <div class="w-172">
-      <div class="d-none d-sm-block">
+    <div class="w-172 d-flex justify-content-end">
+      <div class="d-none d-sm-block right-box">
         <!-- 登录按钮 -->
         <login v-if="!isLogin" />
         <!-- 个人账户信息 -->
@@ -121,10 +113,7 @@
           <!-- 钱包余额 -->
           <div class="d-none d-lg-block">
             <div class="userInfo-item">
-              <img
-                src="../assets//header-wallet.svg"
-                class="userInfo-item__img"
-              />
+              <img src="../assets//header-wallet.svg" class="userInfo-item__img" />
               <span class="userInfo-item__text">10000</span>
               <img src="../assets/header-plus.svg" alt="" />
             </div>
@@ -132,36 +121,60 @@
           <!-- candy数量 -->
           <div class="d-none d-lg-block">
             <div class="userInfo-item">
-              <img
-                src="../assets//header-candy.svg"
-                class="userInfo-item__img"
-              />
+              <img src="../assets//header-candy.svg" class="userInfo-item__img" />
               <span class="userInfo-item__text">6868</span>
               <img src="../assets/header-plus.svg" alt="" />
             </div>
           </div>
           <!-- 用户头像 -->
-          <img
-            @click="handleShowUserInfo"
-            src="../assets/header-avatar.svg"
-            alt=""
-          />
+          <img @click="handleShowUserInfo" src="../assets/header-avatar.svg" alt="" />
+
+          <!-- 个人信息弹窗  弹窗面板展示-->
+          <Account v-if="showUserInfoModal" />
         </div>
       </div>
+
+      <!-- 用户头像 小屏显示 -->
+      <img
+        v-if="isLogin"
+        @click="handleShowUserInfo"
+        src="../assets/header-avatar.svg"
+        class="d-block d-sm-none"
+      />
+
+      <!-- 个人信息弹窗 底部抽屉展示 -->
+      <div
+        v-if="showUserInfoModal"
+        class="drawer d-block d-sm-none"
+        :class="{ open: showUserInfoModal }"
+      >
+        <div class="drawer-content userInfo-box-small">
+          <div class="drawer-header">
+            <div class="modal-header flex-end">
+              <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
+            </div>
+          </div>
+          <div class="drawer-body">
+            <Account />
+          </div>
+        </div>
+      </div>
+
+      <!-- 蒙层 -->
+      <div
+        v-if="showUserInfoModal || showPanel"
+        class="overlay"
+        @click="handleClose"
+      ></div>
     </div>
   </div>
-
-  <!-- 用户信息弹窗 -->
-  <Modal v-model="showUserInfoModal">
-    <UserInfo />
-  </Modal>
 </template>
 
 <script setup>
 import { ref, reactive, onMounted, onUnmounted } from "vue";
 import login from "@/components/login.vue";
-import UserInfo from "@/components/UserInfo.vue";
-import Modal from "@/components/Modal.vue";
+
+import Account from "@/components/Account.vue";
 
 import { useRouter } from "vue-router";
 
@@ -215,9 +228,11 @@ const userInfo = reactive({
 // 展示个人信息弹窗
 const showUserInfoModal = ref(false);
 const handleShowUserInfo = () => {
-  showUserInfoModal.value = true;
-
-  console.log("showUserInfoModal.value", showUserInfoModal.value);
+  showUserInfoModal.value = !showUserInfoModal.value;
+};
+const handleClose = () => {
+  showUserInfoModal.value = false;
+  showPanel.value = false;
 };
 </script>
 
@@ -242,7 +257,7 @@ const handleShowUserInfo = () => {
       border-radius: 32px;
       border: 1px solid #3f3f3f;
       text-align: left;
-      z-index: 9;
+      z-index: 1050;
       .user-box {
         display: flex;
         align-items: center;
@@ -339,7 +354,9 @@ const handleShowUserInfo = () => {
     font-size: 18px;
     line-height: 24px;
   }
-
+  .right-box {
+    position: relative;
+  }
   .userInfo {
     display: flex;
     align-items: center;
@@ -371,6 +388,32 @@ const handleShowUserInfo = () => {
         color: #ffffff;
       }
     }
+  }
+}
+
+// 底部抽屉样式
+// 小屏样式
+.userInfo-box-small {
+  background: #1f0c27;
+  border: 1px solid #3f3f3f;
+  border-radius: 32px 32px 0 0;
+  padding: 24px;
+  min-height: 650px;
+
+  .flex-end {
+    display: flex;
+    justify-content: flex-end;
+  }
+  .modal-header {
+    border: none;
+  }
+  .title {
+    margin-bottom: 40px;
+    color: #fff;
+    font-weight: 600;
+    margin-top: 16px;
+    font-size: 16px;
+    text-align: center;
   }
 }
 @media (max-width: 576px) {

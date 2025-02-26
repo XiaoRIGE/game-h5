@@ -1,60 +1,62 @@
 <template>
-  <div class="userInfo">
-    <div class="header">
-      <div class="header-left">
-        <img src="../assets/header-avatar.svg" class="avatar" />
-        <div class="detailInfo">
-          <div class="name">{{ userInfo.userName }}</div>
-          <div class="id">UID:{{ userInfo.userId }}</div>
+  <div>
+    <div class="userInfo">
+      <div class="header">
+        <div class="header-left">
+          <img src="../assets/header-avatar.svg" class="avatar" />
+          <div class="detailInfo">
+            <div class="name">{{ userInfo.userName }}</div>
+            <div class="id">UID:{{ userInfo.userId }}</div>
+          </div>
+        </div>
+        <div class="header-right">
+          <div class="round-btn">
+            <span>Edit profile</span>
+            <img src="../assets/edit.svg" class="edit" />
+          </div>
+
+          <img src="../assets/share.svg" class="share" />
         </div>
       </div>
-      <div class="header-right">
-        <div class="round-btn">
-          <span>Edit profile</span>
-          <img src="../assets/edit.svg" class="edit" />
+      <div class="content">
+        <!-- tabs标题 -->
+        <div class="tabs">
+          <div
+            @click="handleSwitch('1')"
+            class="tabs-item"
+            :class="activeKey === '1' ? 'active' : ''"
+          >
+            Tier
+          </div>
+          <div
+            @click="handleSwitch('2')"
+            class="tabs-item"
+            :class="activeKey === '2' ? 'active' : ''"
+          >
+            Collection
+          </div>
+          <div
+            @click="handleSwitch('3')"
+            class="tabs-item"
+            :class="activeKey === '3' ? 'active' : ''"
+          >
+            Activity
+          </div>
+          <div
+            @click="handleSwitch('4')"
+            class="tabs-item"
+            :class="activeKey === '4' ? 'active' : ''"
+          >
+            Shipping Inventory
+          </div>
         </div>
 
-        <img src="../assets/share.svg" class="share" />
+        <!-- tab内容 -->
+        <UserInfoTier v-show="activeKey === '1'" />
+        <UserInfoCollection v-show="activeKey === '2'" />
+        <UserInfoActivity v-show="activeKey === '3'" />
+        <UserInfoShipping v-if="activeKey === '4'" />
       </div>
-    </div>
-    <div class="content">
-      <!-- tabs标题 -->
-      <div class="tabs">
-        <div
-          @click="handleSwitch('1')"
-          class="tabs-item"
-          :class="activeKey === '1' ? 'active' : ''"
-        >
-          Tier
-        </div>
-        <div
-          @click="handleSwitch('2')"
-          class="tabs-item"
-          :class="activeKey === '2' ? 'active' : ''"
-        >
-          Collection
-        </div>
-        <div
-          @click="handleSwitch('3')"
-          class="tabs-item"
-          :class="activeKey === '3' ? 'active' : ''"
-        >
-          Activity
-        </div>
-        <div
-          @click="handleSwitch('4')"
-          class="tabs-item"
-          :class="activeKey === '4' ? 'active' : ''"
-        >
-          Shipping Inventory
-        </div>
-      </div>
-
-      <!-- tab内容 -->
-      <UserInfoTier v-show="activeKey === '1'" />
-      <UserInfoCollection v-show="activeKey === '2'" />
-      <UserInfoActivity v-show="activeKey === '3'" />
-      <UserInfoShipping v-if="activeKey === '4'" />
     </div>
   </div>
 </template>

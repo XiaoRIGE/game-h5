@@ -7,36 +7,28 @@
         <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[0].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[1].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[2].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[3].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
     </div>
@@ -70,36 +62,28 @@
         <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[0].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[1].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[2].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[3].title }}</div>
-          <div class="round-btn">
-            Learn More <img src="../assets/link.svg" alt="" />
-          </div>
+          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
         </div>
       </div>
     </div>
@@ -185,7 +169,7 @@ onMounted(() => {
       left: 0;
       color: #fff;
       font-size: 1.5rem;
-      z-index: 9999;
+      z-index: 999;
     }
   }
   .round-btn {
