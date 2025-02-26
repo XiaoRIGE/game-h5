@@ -38,8 +38,10 @@
 
           <div class="menu-box">
             <div @click="goPage('allGames')" class="menu-item border-bo">GACHA GAMES</div>
-            <div class="menu-item border-bo">MARKETPLACE</div>
-            <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
+            <div @click="goPage('home')" class="menu-item border-bo">MARKETPLACE</div>
+            <div @click="goPage('liveWinners')" class="menu-item border-bo">
+              LIVE WINNERS HISTORY
+            </div>
             <div class="menu-item">FAQ</div>
           </div>
           <div @click="goPage('about')" class="desc">ABOUT US</div>
@@ -84,8 +86,10 @@
               <div @click="goPage('allGames')" class="menu-item border-bo">
                 GACHA GAMES
               </div>
-              <div class="menu-item border-bo">MARKETPLACE</div>
-              <div class="menu-item border-bo">LIVE WINNERS HOSTORY</div>
+              <div @click="goPage('home')" class="menu-item border-bo">MARKETPLACE</div>
+              <div @click="goPage('liveWinners')" class="menu-item border-bo">
+                LIVE WINNERS HISTORY
+              </div>
               <div class="menu-item">FAQ</div>
             </div>
             <div
