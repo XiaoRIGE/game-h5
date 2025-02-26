@@ -80,6 +80,7 @@ const handleSwitch = (key) => {
 
 <style lang="scss" scoped>
 .userInfo {
+  color: #fff;
   .header {
     display: flex;
     justify-content: space-between;
@@ -138,6 +139,7 @@ const handleSwitch = (key) => {
       display: flex;
       align-items: center;
       font-size: 20px;
+      color: #fff;
       &-item {
         box-sizing: border-box;
 

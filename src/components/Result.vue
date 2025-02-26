@@ -1,6 +1,6 @@
 <template>
   <div class="result">
-    <div class="title base-border">RESULTS</div>
+    <div v-if="showTitle" class="title base-border">RESULTS</div>
 
     <div class="table-info">
       <div class="row">
@@ -25,7 +25,9 @@
               <template v-if="column.key === 'item'">
                 <div class="d-flex align-items-center">
                   <img src="../assets/item1.png" alt="" />
-                  <span class="item-desc d-none d-md-block">{{ record.item }}</span>
+                  <span class="item-desc d-none d-md-block">{{
+                    record.item
+                  }}</span>
                 </div>
               </template>
             </template>
@@ -39,12 +41,17 @@
               <div @click="handleClear" class="right">Clear all</div>
             </div>
             <div class="select-desc">
-              Sell for SOL/ Exchanging for candies/ Burn and ship to your address
+              Sell for SOL/ Exchanging for candies/ Burn and ship to your
+              address
             </div>
           </div>
 
           <div class="item-list">
-            <div v-for="item in state.selectedRows" :key="item.key" class="item-box">
+            <div
+              v-for="item in state.selectedRows"
+              :key="item.key"
+              class="item-box"
+            >
               <div class="left">
                 <img src="../assets/item1.png" class="img" />
                 <div class="text-box">
@@ -57,7 +64,11 @@
                     <template #addonBefore>
                       <span
                         class="p-2"
-                        @click="item.quantity > 0 ? item.quantity-- : (item.quantity = 0)"
+                        @click="
+                          item.quantity > 0
+                            ? item.quantity--
+                            : (item.quantity = 0)
+                        "
                         >-</span
                       >
                     </template>
@@ -68,7 +79,11 @@
                 </div>
               </div>
               <div class="right">
-                <img @click="handleDelete(item.key)" src="../assets/x.svg" alt="" />
+                <img
+                  @click="handleDelete(item.key)"
+                  src="../assets/x.svg"
+                  alt=""
+                />
               </div>
             </div>
           </div>
@@ -87,6 +102,13 @@ import { useRouter } from "vue-router";
 import useWindow from "@/hooks/useWindow";
 
 const router = useRouter();
+
+const props = defineProps({
+  showTitle: {
+    type: Boolean,
+    default: true,
+  },
+});
 
 const columns = ref([
   {
@@ -125,63 +147,69 @@ const columns = ref([
 
 const { isLargeWindow } = useWindow();
 
-watch(isLargeWindow, (newVal) => {
-  if (newVal) {
-    columns.value = [
-      {
-        title: "ITEM",
-        dataIndex: "item",
-        key: "item",
-        // ellipsis: true,
-        // width: "60%",
-      },
-      {
-        title: "RARITY",
-        dataIndex: "rarity",
-        key: "rarity",
-        // ellipsis: true,
-        // width: 110,
-      },
-      {
-        title: "USDC PRICE",
-        dataIndex: "usdcPrice",
-        key: "usdcPrice",
-        // width: 110,
-      },
-      {
-        title: "CANDY PRICE",
-        key: "candyPrice",
-        dataIndex: "candyPrice",
-        // width: 130,
-      },
-      {
-        title: "QUANTITY",
-        key: "quantity",
-        dataIndex: "quantity",
-        // width: 110,
-      },
-    ];
-  } else {
-    columns.value = [
-      {
-        title: "ITEM",
-        dataIndex: "item",
-        key: "item",
-      },
-      {
-        title: "RARITY",
-        dataIndex: "rarity",
-        key: "rarity",
-      },
+watch(
+  isLargeWindow,
+  (newVal) => {
+    if (newVal) {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+          // ellipsis: true,
+          // width: "60%",
+        },
+        {
+          title: "RARITY",
+          dataIndex: "rarity",
+          key: "rarity",
+          // ellipsis: true,
+          // width: 110,
+        },
+        {
+          title: "USDC PRICE",
+          dataIndex: "usdcPrice",
+          key: "usdcPrice",
+          // width: 110,
+        },
+        {
+          title: "CANDY PRICE",
+          key: "candyPrice",
+          dataIndex: "candyPrice",
+          // width: 130,
+        },
+        {
+          title: "QUANTITY",
+          key: "quantity",
+          dataIndex: "quantity",
+          // width: 110,
+        },
+      ];
+    } else {
+      columns.value = [
+        {
+          title: "ITEM",
+          dataIndex: "item",
+          key: "item",
+        },
+        {
+          title: "RARITY",
+          dataIndex: "rarity",
+          key: "rarity",
+        },
 
-      {
-        title: "QUANTITY",
-        key: "quantity",
-        dataIndex: "quantity",
-      },
-    ];
+        {
+          title: "QUANTITY",
+          key: "quantity",
+          dataIndex: "quantity",
+        },
+      ];
+    }
+  },
+  {
+    immediate: true,
   }
-});
+);
 
 const dataSource = [
   {

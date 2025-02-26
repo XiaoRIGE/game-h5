@@ -42,7 +42,10 @@
     </div>
 
     <div class="second-modal">
-      <div class="money-item d-flex justify-content-between align-items-center">
+      <div
+        @click="goPage('userInfo')"
+        class="money-item d-flex justify-content-between align-items-center"
+      >
         <div class="left d-flex justify-content-between align-items-center">
           <img src="../assets/header-nft.svg" alt="" />
           <div class="detail-box">
@@ -192,6 +195,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import { useRouter } from "vue-router";
 import Modal from "@/components/Modal.vue";
 import Candy from "@/components/Candy.vue";
 
@@ -217,6 +221,12 @@ const showCandy = ref(false);
 const handleShowCandy = () => {
   showCandy.value = true;
   showWallet.value = false;
+};
+
+const router = useRouter();
+const goPage = (name) => {
+  emits("closeAccount");
+  router.push({ name });
 };
 </script>
 

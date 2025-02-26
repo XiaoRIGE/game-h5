@@ -54,6 +54,11 @@ const router = createRouter({
       name: "event",
       component: () => import("../views/event/index.vue"),
     },
+    {
+      path: "/user-info",
+      name: "userInfo",
+      component: () => import("../views/userInfo/index.vue"),
+    },
   ],
 });
 
