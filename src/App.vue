@@ -1,12 +1,25 @@
 <script setup>
+import { computed } from "vue";
+import { useRoute } from "vue-router";
 import Header from "./layout/Header.vue";
 import Footer from "./layout/Footer.vue";
+import useWindow from "@/hooks/useWindow";
+
+const route = useRoute();
+const { windowWidth } = useWindow();
+
+const hideHeader = computed(() => {
+  return route.path === "/missing" && windowWidth.value < 576;
+});
 </script>
 
 <template>
   <div class="main">
-    <Header />
-    <div class="main-box container">
+    <Header v-if="!hideHeader" />
+    <div
+      class="main-box container"
+      :class="hideHeader ? 'special-container' : ''"
+    >
       <router-view></router-view>
     </div>
     <!-- <router-view v-slot="{ Component }">
@@ -14,7 +27,7 @@ import Footer from "./layout/Footer.vue";
         <component :is="Component" />
       </keep-alive>
     </router-view> -->
-    <Footer />
+    <Footer v-if="!hideHeader" />
   </div>
 </template>
 
@@ -47,6 +60,13 @@ import Footer from "./layout/Footer.vue";
     max-width: 1200px;
   }
 }
+
+@media (max-width: 576px) {
+  .special-container {
+    padding: 0;
+  }
+}
+// special-container
 
 // .main::before {
 //   content: "";

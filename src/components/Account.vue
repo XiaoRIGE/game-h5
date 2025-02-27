@@ -56,7 +56,10 @@
           <img src="../assets/arrow-right.svg" alt="" />
         </div>
       </div>
-      <div class="money-item d-flex justify-content-between align-items-center">
+      <div
+        @click="goPage('missing')"
+        class="money-item d-flex justify-content-between align-items-center"
+      >
         <div class="left d-flex justify-content-between align-items-center">
           <img src="../assets/header-miss.svg" alt="" />
           <div class="detail-box">

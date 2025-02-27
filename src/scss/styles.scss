@@ -10,6 +10,14 @@
   border-left: none;
   border-right: none;
 }
+.base-title {
+  margin-bottom: 20px;
+  display: inline-block;
+  color: #fff;
+  font-size: 32px;
+  line-height: 40px;
+  font-weight: 600;
+}
 
 .modal-border {
   border: 1px solid #3f3f3f;
@@ -113,6 +121,40 @@
 }
 .ant-table-cell-row-hover {
   background-color: #1f0c27 !important;
+}
+.ant-table-body {
+  overflow-y: auto !important;
+}
+.ant-table-wrapper .ant-table {
+  background-color: #1f0c27 !important;
+}
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr:last-child
+  > td {
+  border-bottom: 1px solid #3f3f3f;
+}
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr
+  > td {
+  border-top: 1px solid #3f3f3f;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  border-bottom: 1px solid #3f3f3f;
+}
+
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background-color: #3f3f3f;
+}
+.ant-table-wrapper .ant-table-summary > tr > td {
+  border-color: #3f3f3f;
+}
+.ant-table-wrapper div.ant-table-summary {
+  box-shadow: 0 -1px 0 #3f3f3f;
 }
 
 // 浏览器滚动条样式

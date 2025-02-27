@@ -59,6 +59,11 @@ const router = createRouter({
       name: "userInfo",
       component: () => import("../views/userInfo/index.vue"),
     },
+    {
+      path: "/missing",
+      name: "missing",
+      component: () => import("../views/missing/index.vue"),
+    },
   ],
 });
 
