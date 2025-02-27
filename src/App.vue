@@ -9,7 +9,10 @@ const route = useRoute();
 const { windowWidth } = useWindow();
 
 const hideHeader = computed(() => {
-  return route.path === "/missing" && windowWidth.value < 576;
+  return (
+    (route.path === "/missing" || route.path === "/account-setting") &&
+    windowWidth.value < 576
+  );
 });
 </script>
 

@@ -14,7 +14,7 @@
         <div class="user-box">
           <img src="../../assets/avatar.svg" class="avatar-icon" />
 
-          <div class="edit-box">
+          <div @click="goPage" class="edit-box">
             <span>Player678</span>
             <img src="../../assets/edit.svg" style="margin-left: 8px" />
           </div>
@@ -315,6 +315,12 @@ const dataSource = [
 
 const handleBack = () => {
   router.back();
+};
+
+const goPage = () => {
+  router.push({
+    name: "accountSetting",
+  });
 };
 
 function customCell(record, rowIndex) {

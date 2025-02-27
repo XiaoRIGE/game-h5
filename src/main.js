@@ -13,6 +13,7 @@ import {
   Input,
   Select,
   Radio,
+  Upload,
 } from "ant-design-vue";
 
 // Import all of Bootstrap's JS
@@ -29,5 +30,6 @@ app.use(Form);
 app.use(Input);
 app.use(Select);
 app.use(Radio);
+app.use(Upload);
 
 app.mount("#app");
