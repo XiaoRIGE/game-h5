@@ -150,6 +150,7 @@ const formState = reactive({
   .wrap {
     display: flex;
     justify-content: space-between;
+    margin-top: 40px;
     // 左侧样式
     .left {
       width: 340px;

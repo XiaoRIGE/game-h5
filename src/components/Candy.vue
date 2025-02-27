@@ -130,6 +130,7 @@ const candyNumList = ref([
   .candy-list {
     margin-top: 24px;
     // height: 300px;
+    max-height: 500px;
     overflow: auto;
     .candy-list__item {
       margin-top: 24px;

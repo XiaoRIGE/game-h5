@@ -88,8 +88,6 @@ function customCell(record, rowIndex) {
   };
 }
 const customHeaderCell = (column) => {
-  console.log("column", column);
-
   return {
     style: {
       backgroundColor: "#1E1E1E", // 设置 header 背景色

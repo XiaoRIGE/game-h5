@@ -10,7 +10,7 @@
           </div>
         </div>
         <div class="header-right">
-          <div class="round-btn">
+          <div @click="goPage" class="round-btn">
             <span>Edit profile</span>
             <img src="../assets/edit.svg" class="edit" />
           </div>
@@ -62,10 +62,13 @@
 </template>
 <script setup>
 import { reactive, ref } from "vue";
+import { useRouter } from "vue-router";
 import UserInfoTier from "@/components/UserInfoTier.vue";
 import UserInfoCollection from "@/components/UserInfoCollection.vue";
 import UserInfoActivity from "@/components/UserInfoActivity.vue";
 import UserInfoShipping from "@/components/UserInfoShipping.vue";
+
+const router = useRouter();
 
 const userInfo = reactive({
   userName: "Player678",
@@ -75,6 +78,10 @@ const userInfo = reactive({
 const activeKey = ref("1");
 const handleSwitch = (key) => {
   activeKey.value = key;
+};
+
+const goPage = () => {
+  router.push("/account-setting");
 };
 </script>
 

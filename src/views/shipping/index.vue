@@ -17,7 +17,10 @@
             <div class="row">
               <div class="col-12">
                 <a-form-item name="email">
-                  <a-input v-model:value="formState.email" placeholder="Email *">
+                  <a-input
+                    v-model:value="formState.email"
+                    placeholder="Email *"
+                  >
                   </a-input>
                 </a-form-item>
               </div>
@@ -34,7 +37,9 @@
                     placeholder="Country/Region *"
                     custom-class="custom-select"
                   >
-                    <a-select-option value="shanghai">country 1</a-select-option>
+                    <a-select-option value="shanghai"
+                      >country 1</a-select-option
+                    >
                     <a-select-option value="beijing">country 2</a-select-option>
                   </a-select>
                 </a-form-item>
@@ -42,13 +47,17 @@
 
               <div class="col-6">
                 <a-form-item name="Name">
-                  <a-input v-model:value="formState.name" placeholder="Name *"> </a-input>
+                  <a-input v-model:value="formState.name" placeholder="Name *">
+                  </a-input>
                 </a-form-item>
               </div>
 
               <div class="col-6">
                 <a-form-item name="Phone">
-                  <a-input v-model:value="formState.phone" placeholder="Phone *">
+                  <a-input
+                    v-model:value="formState.phone"
+                    placeholder="Phone *"
+                  >
                   </a-input>
                 </a-form-item>
               </div>
@@ -75,7 +84,8 @@
 
               <div class="col-12">
                 <a-form-item name="city">
-                  <a-input v-model:value="formState.city" placeholder="City *"> </a-input>
+                  <a-input v-model:value="formState.city" placeholder="City *">
+                  </a-input>
                 </a-form-item>
               </div>
 
@@ -91,14 +101,20 @@
 
               <div class="col-12">
                 <a-form-item name="address">
-                  <a-input v-model:value="formState.address" placeholder="Address *">
+                  <a-input
+                    v-model:value="formState.address"
+                    placeholder="Address *"
+                  >
                   </a-input>
                 </a-form-item>
               </div>
 
               <div class="col-12">
                 <a-form-item name="address2">
-                  <a-input v-model:value="formState.address2" placeholder="address2 *">
+                  <a-input
+                    v-model:value="formState.address2"
+                    placeholder="address2 *"
+                  >
                   </a-input>
                 </a-form-item>
               </div>
@@ -139,7 +155,9 @@
               <template v-if="column.key === 'item'">
                 <div class="d-flex align-items-center">
                   <img src="../../assets/item1.png" alt="" />
-                  <span class="item-desc d-none d-xl-block">{{ record.item }}</span>
+                  <span class="item-desc d-none d-xl-block">{{
+                    record.item
+                  }}</span>
                 </div>
               </template>
             </template>
@@ -192,7 +210,9 @@
         </div>
 
         <div class="footer-btn__modal">
-          <div @click="handleConfirm" class="btn1 base-round-border">Confirm</div>
+          <div @click="handleConfirm" class="btn1 base-round-border">
+            Confirm
+          </div>
           <div @click="handleCancel" class="btn2">Cancel</div>
         </div>
       </div>
@@ -207,8 +227,8 @@
           <div class="result-title">Success</div>
           <img src="../../assets/result-success.svg" class="result-img" />
           <div class="result-tips">
-            Payment for your shipping order was executed successfully, track your package
-            delivery process in
+            Payment for your shipping order was executed successfully, track
+            your package delivery process in
             <span class="blue-text">Shipping Inventory</span>
           </div>
         </div>
@@ -216,12 +236,14 @@
           <div class="result-title">Error</div>
           <img src="../../assets/result-err.svg" class="result-img" />
           <div class="result-tips">
-            You don’t have enough USDC balance in your wallet, please increase your wallet
-            balance, then try again.
+            You don’t have enough USDC balance in your wallet, please increase
+            your wallet balance, then try again.
           </div>
         </div>
         <div v-if="!isSuccess" class="footer-btn__modal footer-btn__modal2">
-          <div @click="closeResultModal" class="btn1 base-round-border">Try Again</div>
+          <div @click="closeResultModal" class="btn1 base-round-border">
+            Try Again
+          </div>
           <div @click="closeResultModal" class="btn2">Cancel</div>
         </div>
       </div>
@@ -255,8 +277,6 @@ const width = computed(() => {
 });
 
 const handleSubmit = () => {
-  console.log("formState", formState);
-
   showModal.value = true;
 };
 const handleBack = () => {
