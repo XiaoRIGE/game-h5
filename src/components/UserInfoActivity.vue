@@ -17,6 +17,8 @@
   </a-table>
 </template>
 <script setup>
+import { customHeaderCell, customCell } from "@/utils";
+
 const columns = [
   {
     title: "NAME",
@@ -65,36 +67,6 @@ const dataSource = [
     type: "Gacha Win",
   },
 ];
-
-// const rowSelection = {
-//   onChange: (selectedRowKeys, selectedRows) => {
-//     console.log(
-//       `selectedRowKeys: ${selectedRowKeys}`,
-//       "selectedRows: ",
-//       selectedRows
-//     );
-//   },
-//   getCheckboxProps: (record) => ({
-//     disabled: record.name === "Disabled User", // Column configuration not to be checked
-//     name: record.name,
-//   }),
-// };
-function customCell(record, rowIndex) {
-  return {
-    style: {
-      backgroundColor: "#1F0C27", // 设置 body 背景色
-      color: "#fff", // 设置 body 文字颜色
-    },
-  };
-}
-const customHeaderCell = (column) => {
-  return {
-    style: {
-      backgroundColor: "#1E1E1E", // 设置 header 背景色
-      color: "#fff", // 设置 header 文字颜色
-    },
-  };
-};
 </script>
 
 <style lang="scss">

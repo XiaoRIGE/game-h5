@@ -255,7 +255,9 @@
 <script setup>
 import { reactive, ref, computed } from "vue";
 import Modal from "@/components/Modal.vue";
+import { customHeaderCell, customCell } from "@/utils";
 import { useRouter } from "vue-router";
+
 const router = useRouter();
 
 const formState = reactive({
@@ -366,23 +368,6 @@ const columns = ref([
     dataIndex: "quantity",
   },
 ]);
-
-function customCell(record, rowIndex) {
-  return {
-    style: {
-      backgroundColor: "#1F0C27", // 设置 body 背景色
-      color: "#fff", // 设置 body 文字颜色
-    },
-  };
-}
-const customHeaderCell = (column) => {
-  return {
-    style: {
-      backgroundColor: "#1E1E1E", // 设置 header 背景色
-      color: "#fff", // 设置 header 文字颜色
-    },
-  };
-};
 </script>
 
 <style lang="scss" scoped>

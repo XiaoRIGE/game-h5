@@ -53,6 +53,7 @@
 import { ref, watch } from "vue";
 import useWindow from "@/hooks/useWindow";
 import { useRouter } from "vue-router";
+import { customHeaderCell, customCell } from "@/utils";
 
 const { isLargeWindow } = useWindow();
 
@@ -203,22 +204,6 @@ watch(
     immediate: true,
   }
 );
-function customCell(record, rowIndex) {
-  return {
-    style: {
-      backgroundColor: "#1F0C27", // 设置 body 背景色
-      color: "#fff", // 设置 body 文字颜色
-    },
-  };
-}
-const customHeaderCell = (column) => {
-  return {
-    style: {
-      backgroundColor: "#1E1E1E", // 设置 header 背景色
-      color: "#fff", // 设置 header 文字颜色
-    },
-  };
-};
 
 const router = useRouter();
 const goPage = () => {

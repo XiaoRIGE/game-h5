@@ -1,6 +1,10 @@
 <template>
   <div class="winner-box">
-    <winners :tableList="tableList" :showBottomBtn="false" />
+    <winners
+      :tableList="tableList"
+      :showBottomBtn="false"
+      :scrollYHeight="600"
+    />
   </div>
 </template>
 <script setup>

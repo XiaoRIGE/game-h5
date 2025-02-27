@@ -99,6 +99,7 @@
 <script setup>
 import { reactive, ref, watch, computed } from "vue";
 import { useRouter } from "vue-router";
+import { customHeaderCell, customCell } from "@/utils";
 import useWindow from "@/hooks/useWindow";
 
 const router = useRouter();
@@ -261,22 +262,7 @@ const dataSource = [
     quantity: "1",
   },
 ];
-function customCell(record, rowIndex) {
-  return {
-    style: {
-      backgroundColor: "#1F0C27", // 设置 body 背景色
-      color: "#fff", // 设置 body 文字颜色
-    },
-  };
-}
-const customHeaderCell = (column) => {
-  return {
-    style: {
-      backgroundColor: "#1E1E1E", // 设置 header 背景色
-      color: "#fff", // 设置 header 文字颜色
-    },
-  };
-};
+
 const state = reactive({
   selectedRows: [], // Check here to configure the default column
   loading: false,

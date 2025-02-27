@@ -61,18 +61,25 @@
   </div>
 </template>
 <script setup>
-import { reactive, ref } from "vue";
-import { useRouter } from "vue-router";
+import { reactive, ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
 import UserInfoTier from "@/components/UserInfoTier.vue";
 import UserInfoCollection from "@/components/UserInfoCollection.vue";
 import UserInfoActivity from "@/components/UserInfoActivity.vue";
 import UserInfoShipping from "@/components/UserInfoShipping.vue";
 
 const router = useRouter();
+const route = useRoute();
 
 const userInfo = reactive({
   userName: "Player678",
   userId: "12487124098",
+});
+
+onMounted(() => {
+  if (route.query && route.query.type) {
+    activeKey.value = route.query.type;
+  }
 });
 
 const activeKey = ref("1");

@@ -4,7 +4,7 @@
 
     <div class="footer-btns">
       <div @click="handleAgain" class="btn1 base-round-border">Spin again</div>
-      <div class="btn2">My Inventory</div>
+      <div @click="goPage" class="btn2">My Inventory</div>
     </div>
   </div>
 </template>
@@ -18,6 +18,15 @@ const router = useRouter();
 const handleAgain = () => {
   router.push({
     name: "play",
+  });
+};
+
+const goPage = () => {
+  router.push({
+    name: "userInfo",
+    query: {
+      type: 4,
+    },
   });
 };
 </script>

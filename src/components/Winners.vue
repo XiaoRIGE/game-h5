@@ -10,7 +10,7 @@
         :pagination="false"
         :customRow="customCell"
         :customHeaderRow="customHeaderCell"
-        :scroll="{ y: 400 }"
+        :scroll="{ y: scrollYHeight }"
       >
         <template #bodyCell="{ column, record }">
           <template v-if="column.key === 'item'">
@@ -42,6 +42,7 @@
 import { ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import useWindow from "@/hooks/useWindow";
+import { customHeaderCell, customCell } from "@/utils";
 
 import item1 from "@/assets/item1.png";
 import item2 from "@/assets/item2.png";
@@ -207,6 +208,10 @@ defineProps({
     type: Boolean,
     default: true,
   },
+  scrollYHeight: {
+    type: Number,
+    default: 400,
+  },
 });
 
 const router = useRouter();
@@ -214,23 +219,6 @@ const goPage = () => {
   router.push({
     name: "liveWinners",
   });
-};
-
-function customCell(record, rowIndex) {
-  return {
-    style: {
-      backgroundColor: "#1F0C27", // 设置 body 背景色
-      color: "#fff", // 设置 body 文字颜色
-    },
-  };
-}
-const customHeaderCell = (column) => {
-  return {
-    style: {
-      backgroundColor: "#1E1E1E", // 设置 header 背景色
-      color: "#fff", // 设置 header 文字颜色
-    },
-  };
 };
 </script>
 
