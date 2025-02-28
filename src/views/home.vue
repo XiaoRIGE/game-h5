@@ -6,7 +6,9 @@
 
     <Market />
 
-    <Winners />
+    <div class="transparent-head">
+      <Winners />
+    </div>
 
     <Faq />
   </div>

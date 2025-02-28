@@ -123,6 +123,7 @@
 }
 
 // reset
+// table
 .ant-table-wrapper .ant-table-thead > tr > th {
   background: #1e1e1e;
   color: #fff;
@@ -134,8 +135,11 @@
   overflow-y: auto !important;
 }
 .ant-table-wrapper .ant-table {
-  background-color: #1f0c27 !important;
+  background-color: transparent;
 }
+// .ant-table-wrapper .ant-table {
+//   background-color: #1f0c27 !important;
+// }
 .ant-table-wrapper
   .ant-table:not(.ant-table-bordered)
   .ant-table-tbody
@@ -163,6 +167,120 @@
 }
 .ant-table-wrapper div.ant-table-summary {
   box-shadow: 0 -1px 0 #3f3f3f;
+}
+
+// 重写样式
+// table-头部
+.ant-table-thead,
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background-color: transparent !important;
+  border: none;
+}
+
+.ant-table-thead .ant-table-cell::before {
+  display: none;
+}
+.ant-table-thead .ant-table-cell-scrollbar {
+  display: none;
+}
+
+// 表格样式1
+.ant-table-thead,
+.ant-table-wrapper .ant-table-thead > tr > th {
+  background-color: #1e1e1e !important;
+  border: none;
+
+  box-shadow: inset 0.5px 0.5px 0.5px 0.5px #3f3f3f;
+}
+// 最后一行样式
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr:last-child
+  > td {
+  border: none;
+  border-bottom: 1px solid #3f3f3f;
+  background: transparent;
+}
+
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr
+  > td {
+  box-shadow: inset 0.5px 0.5px 0.5px 0.5px #3f3f3f;
+  border: none;
+  background: transparent;
+}
+// 第一行样式
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr:first-child
+  > td,
+.ant-table-wrapper
+  .ant-table:not(.ant-table-bordered)
+  .ant-table-tbody
+  > tr.ant-table-measure-row
+  + tr
+  > td {
+  box-shadow: inset 0.5px 0.5px 0.5px 0.5px #3f3f3f;
+  border: none;
+  background: transparent;
+}
+
+// 表格样式2
+.transparent-head {
+  .ant-table-thead,
+  .ant-table-wrapper .ant-table-thead > tr > th {
+    background-color: transparent !important;
+    border: none;
+  }
+
+  .ant-table-thead,
+  .ant-table-wrapper .ant-table-thead > tr > th {
+    background-color: transparent !important;
+    border: none;
+    box-shadow: none;
+  }
+
+  .ant-table-wrapper
+    .ant-table:not(.ant-table-bordered)
+    .ant-table-tbody
+    > tr:last-child
+    > td {
+    border: none;
+    background: #1e1e1e;
+  }
+
+  .ant-table-wrapper
+    .ant-table:not(.ant-table-bordered)
+    .ant-table-tbody
+    > tr
+    > td {
+    box-shadow: inset 1px 1px 1px 1px #000;
+    border: none;
+    background: #1e1e1e;
+  }
+  // 第一行样式
+  .ant-table-wrapper
+    .ant-table:not(.ant-table-bordered)
+    .ant-table-tbody
+    > tr:first-child
+    > td,
+  .ant-table-wrapper
+    .ant-table:not(.ant-table-bordered)
+    .ant-table-tbody
+    > tr.ant-table-measure-row
+    + tr
+    > td {
+    box-shadow: inset 1px 1px 1px 1px #000;
+    border: none;
+    background: #1e1e1e;
+  }
+  .ant-table-cell-row-hover {
+    background-color: #1e1e1e !important;
+  }
 }
 
 // 浏览器滚动条样式

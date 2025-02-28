@@ -245,6 +245,7 @@ onMounted(() => {
   bottom: 24px;
 }
 .carousel-indicators {
+  text-align: center;
   bottom: -40px;
   button {
     width: 8px;

@@ -29,9 +29,13 @@
 
           <template v-if="column.key === 'winner'">
             <div class="d-flex align-items-center">
-              <img src="../assets/user.png" style="margin-right: 15px" />
+              <img
+                src="../assets/user.png"
+                class="d-none d-md-block"
+                style="margin-right: 15px"
+              />
               <div>
-                <div class="item-desc d-none d-md-block">
+                <div class="item-desc">
                   {{ record.winner }}
                 </div>
               </div>
