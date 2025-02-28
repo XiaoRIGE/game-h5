@@ -117,7 +117,7 @@
   margin: 32px 0;
 }
 .market {
-  margin: 0 32px;
+  margin: 0;
   padding: 40px;
   //   height: 466px;
   background: rgba(45, 16, 57, 0.3);

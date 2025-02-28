@@ -61,12 +61,16 @@ const hideHeader = computed(() => {
   .container-sm,
   .container {
     max-width: 1200px;
+    padding: 0;
   }
 }
 
 @media (max-width: 576px) {
   .special-container {
     padding: 0;
+  }
+  .container {
+    padding: 0 24px;
   }
 }
 // special-container

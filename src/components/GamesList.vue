@@ -75,10 +75,10 @@ const goDetailPage = () => {
 
 <style lang="scss" scoped>
 .game-box {
-  margin: 32px 0;
+  margin: 84px 0;
 }
 .game {
-  margin: 0 32px;
+  margin: 0;
   padding: 40px;
   //   height: 466px;
   background: rgba(45, 16, 57, 0.3);

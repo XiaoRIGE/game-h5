@@ -7,52 +7,82 @@
         <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[0].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[1].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[2].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item">
         <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text">
           <div>{{ bannerList[3].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
     </div>
-
     <!-- 切换按钮 -->
     <!-- 在中等屏幕（≥576px ）上显示 -->
-    <button
-      class="carousel-control-prev d-none d-sm-block"
-      type="button"
-      data-bs-target="#carouselExample"
-      data-bs-slide="prev"
-    >
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Previous</span>
-    </button>
-    <button
-      class="carousel-control-next d-none d-sm-block"
-      type="button"
-      data-bs-target="#carouselExample"
-      data-bs-slide="next"
-    >
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="visually-hidden">Next</span>
-    </button>
+    <img
+      @click="handlePrev"
+      class="btn-perv d-none d-sm-block"
+      src="../assets/banner-left.svg"
+      alt=""
+    />
+    <img
+      @click="handleNext"
+      class="btn-next d-none d-sm-block"
+      src="../assets/banner-right.svg"
+      alt=""
+    />
+    <!-- 指示器 -->
+    <div class="carousel-indicators d-none d-sm-block">
+      <button
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample"
+        data-bs-slide-to="3"
+        aria-label="Slide 4"
+      ></button>
+    </div>
   </div>
 
   <!-- 在小屏幕（<576px）上显示 -->
@@ -62,30 +92,67 @@
         <img :src="bannerList[0].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[0].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[1].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[1].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[2].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[2].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
       <div class="carousel-item small-img-box">
         <img :src="bannerList[3].url" class="d-block w-100" />
         <div class="carousel-item__text--sm">
           <div>{{ bannerList[3].title }}</div>
-          <div class="round-btn">Learn More <img src="../assets/link.svg" alt="" /></div>
+          <div class="round-btn">
+            Learn More <img src="../assets/link.svg" alt="" />
+          </div>
         </div>
       </div>
+    </div>
+    <!-- 指示器 -->
+    <div class="carousel-indicators d-block d-sm-none">
+      <button
+        type="button"
+        data-bs-target="#carouselExample2"
+        data-bs-slide-to="0"
+        class="active"
+        aria-current="true"
+        aria-label="Slide 1"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample2"
+        data-bs-slide-to="1"
+        aria-label="Slide 2"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample2"
+        data-bs-slide-to="2"
+        aria-label="Slide 3"
+      ></button>
+      <button
+        type="button"
+        data-bs-target="#carouselExample2"
+        data-bs-slide-to="3"
+        aria-label="Slide 4"
+      ></button>
     </div>
   </div>
 </template>
@@ -123,6 +190,7 @@ const bannerList = ref([
   },
 ]);
 
+let carousel = null;
 const init = () => {
   const innerWidth = window.innerWidth;
   const myCarouselElement =
@@ -130,14 +198,23 @@ const init = () => {
       ? document.querySelector("#carouselExample")
       : document.querySelector("#carouselExample2");
 
-  const carousel = new bootstrap.Carousel(myCarouselElement, {
+  carousel = new bootstrap.Carousel(myCarouselElement, {
     interval: 4000,
     touch: false,
   });
 
   carousel.cycle();
+
+  console.log("carousel", carousel);
 };
 
+const handlePrev = () => {
+  carousel && carousel.prev();
+};
+
+const handleNext = () => {
+  carousel && carousel.next();
+};
 onMounted(() => {
   init();
 });
@@ -145,7 +222,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .banner {
-  margin: 2% 32px;
+  margin: 2% 0;
 }
 
 // RESET
@@ -153,8 +230,47 @@ onMounted(() => {
 .carousel-control-next {
   opacity: 1;
 }
+.carousel-inner {
+  border-radius: 32px !important;
+}
+
+.btn-perv {
+  position: absolute;
+  right: 96px;
+  bottom: 24px;
+}
+.btn-next {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+}
+.carousel-indicators {
+  bottom: -40px;
+  button {
+    width: 8px;
+    height: 8px;
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+  }
+  .active {
+    width: 32px;
+    height: 8px;
+    border-radius: 8px;
+    background-image: linear-gradient(
+      to right,
+      #1e58fc,
+      #a427eb,
+      #d914e4,
+      #e10fa3,
+      #f10419
+    );
+  }
+}
+
 .carousel-item {
   position: relative;
+
   .carousel-item__text {
     position: absolute;
     bottom: 10px;
@@ -197,8 +313,18 @@ onMounted(() => {
 //   }
 // }
 .small-img-box > img {
-  height: 400px;
+  height: 342px;
   object-fit: cover;
   border-radius: 16px;
+}
+
+@media (max-width: 576px) {
+  .banner {
+    margin-top: 32px;
+  }
+  .carousel-indicators {
+    bottom: -40px;
+    text-align: center;
+  }
 }
 </style>

@@ -227,7 +227,7 @@ const goPage = () => {
   margin: 32px 0;
 }
 .winner {
-  margin: 0 32px;
+  margin: 0;
   padding: 40px;
   background: rgba(45, 16, 57, 0.3);
   border: 1px solid #3f3f3f;
