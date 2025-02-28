@@ -48,7 +48,20 @@
             </div>
             <div @click="goPage('home')" class="menu-item">FAQ</div>
           </div>
-          <div @click="goPage('about')" class="desc">ABOUT US</div>
+          <div class="desc d-flex align-items-center">
+            <div
+              @click="goPage('about')"
+              class="d-flex align-items-center"
+              style="margin-right: 24px"
+            >
+              <img src="../assets/u-aboutUs.svg" style="margin-right: 4px" />
+              <span>ABOUT US</span>
+            </div>
+            <div class="d-flex align-items-center">
+              <img src="../assets/u-contactUs.svg" style="margin-right: 4px" />
+              <span>CONTACT US</span>
+            </div>
+          </div>
         </div>
       </Transition>
 
@@ -104,13 +117,31 @@
               </div>
               <div @click="goPage('home')" class="menu-item">FAQ</div>
             </div>
-            <div
+            <!-- <div
               @click="goPage('about')"
               class="desc"
-              data-bs-dismiss="offcanvas"
-              aria-label="Close"
+              
             >
               ABOUT US
+            </div> -->
+            <div class="desc d-flex align-items-center">
+              <div
+                @click="goPage('about')"
+                class="d-flex align-items-center"
+                style="margin-right: 24px"
+                data-bs-dismiss="offcanvas"
+                aria-label="Close"
+              >
+                <img src="../assets/u-aboutUs.svg" style="margin-right: 4px" />
+                <span>ABOUT US</span>
+              </div>
+              <div class="d-flex align-items-center">
+                <img
+                  src="../assets/u-contactUs.svg"
+                  style="margin-right: 4px"
+                />
+                <span>CONTACT US</span>
+              </div>
             </div>
           </div>
         </div>
@@ -283,7 +314,7 @@ const handleClose = () => {
       top: 80px;
       padding: 40px;
       width: 390px;
-      height: 544px;
+      min-height: 544px;
       background: #1f0c27;
       border-radius: 32px;
       border: 1px solid #3f3f3f;
@@ -325,7 +356,8 @@ const handleClose = () => {
       .desc {
         margin-top: 40px;
         font-size: 14px;
-        color: #606060;
+        // color: #606060;
+        color: #fff;
       }
     }
     .left-panel {
@@ -376,7 +408,8 @@ const handleClose = () => {
       .desc {
         margin-top: 40px;
         font-size: 14px;
-        color: #606060;
+        // color: #606060;
+        color: #fff;
       }
     }
   }

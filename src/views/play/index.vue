@@ -1,18 +1,16 @@
 <template>
   <div class="play">
-    <div>
-      <video
-        @ended="handleEnd"
-        :muted="isMuted"
-        width="100%"
-        class="video-box"
-        autoplay
-        preload="auto"
-        ref="videoPlayer"
-      >
-        <source src="../../assets/game.mp4" type="video/webm" />
-      </video>
-    </div>
+    <video
+      @ended="handleEnd"
+      :muted="isMuted"
+      width="100%"
+      class="video-box"
+      autoplay
+      preload="auto"
+      ref="videoPlayer"
+    >
+      <source src="../../assets/game.mp4" type="video/webm" />
+    </video>
 
     <div class="right-btns">
       <div @click="handleSkip" class="skip">Skip</div>
@@ -32,8 +30,9 @@
   </div>
 </template>
 <script setup>
-import { ref } from "vue";
-
+import { ref, onMounted, onUnmounted } from "vue";
+import bg1 from "../../assets/bg.png";
+import bg2 from "../../assets/play-bg.png";
 import { useRouter } from "vue-router";
 const router = useRouter();
 
@@ -50,23 +49,30 @@ const handleEnd = () => {
 
 const videoPlayer = ref(null);
 const handleSkip = () => {
-  console.log("跳过播放");
   videoPlayer.value.pause();
 
   router.push("result");
 };
+
+onMounted(() => {
+  document.querySelector(".main").classList.add("main-bg2");
+});
+
+onUnmounted(() => {
+  document.querySelector(".main").classList.remove("main-bg2");
+});
 </script>
 
 <style lang="scss" scoped>
 .play {
   padding-top: 80px;
 
-  background-image: url("../../assets/play-bg.png");
-  background-size: 100% 100%;
-  background: url("../../assets/play-bg.png") 100% 100% cover;
+  // background-image: url("../../assets/play-bg.png");
+  // background-size: 100% 100%;
+  // background: url("../../assets/play-bg.png") 100% 100% cover;
   height: calc(100vh - 152px);
   .video-box {
-    max-height: 400px;
+    height: 80%;
   }
   .right-btns {
     margin-top: 60px;

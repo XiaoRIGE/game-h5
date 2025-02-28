@@ -53,6 +53,10 @@ const hideHeader = computed(() => {
   }
 }
 
+.main-bg2 {
+  background: url("./assets/play-bg.png") no-repeat 100% 100%;
+}
+
 @media (min-width: 1200px) {
   .container-xxl,
   .container-xl,
