@@ -285,31 +285,31 @@ const columns = ref([
 const dataSource = [
   {
     index: "1",
-    username: "User12987z",
+    username: "User17z",
     points: "100",
     totalPoints: "123412",
   },
   {
     index: "2",
-    username: "User12987z",
+    username: "User17z",
     points: "100",
     totalPoints: "123412",
   },
   {
     index: "3",
-    username: "User12987z",
+    username: "User17z",
     points: "100",
     totalPoints: "123412",
   },
   {
     index: "4",
-    username: "User12987z",
+    username: "User17z",
     points: "100",
     totalPoints: "123412",
   },
   {
     index: "5",
-    username: "User12987z",
+    username: "User17z",
     points: "100",
     totalPoints: "123412",
   },
