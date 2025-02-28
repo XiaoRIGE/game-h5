@@ -75,7 +75,7 @@ const goDetailPage = () => {
 
 <style lang="scss" scoped>
 .game-box {
-  margin: 84px 0;
+  margin: 76px 0 60px;
 }
 .game {
   margin: 0;
@@ -175,6 +175,12 @@ const goDetailPage = () => {
     display: inline-block;
     border-radius: 20px;
     border: 1px solid #fff;
+  }
+}
+
+@media (max-width: 576px) {
+  .game-box {
+    margin: 48px 0 32px;
   }
 }
 </style>

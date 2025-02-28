@@ -114,7 +114,7 @@
 
 <style lang="scss" scoped>
 .market-box {
-  margin: 32px 0;
+  margin: 60px 0;
 }
 .market {
   margin: 0;
@@ -222,6 +222,12 @@
     display: inline-block;
     border-radius: 20px;
     border: 1px solid #fff;
+  }
+}
+
+@media (max-width: 576px) {
+  .market-box {
+    margin: 32px 0;
   }
 }
 </style>

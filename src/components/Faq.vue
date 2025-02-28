@@ -129,7 +129,7 @@ const handleChangeIndex = (index) => {
 
 <style lang="scss" scoped>
 .faq-box {
-  margin: 32px 0;
+  margin: 60px 0 50px;
 }
 .faq {
   margin: 0;
@@ -235,6 +235,12 @@ const handleChangeIndex = (index) => {
     margin-left: 16px;
     width: 32px;
     height: 32px;
+  }
+}
+
+@media (max-width: 576px) {
+  .aq-box {
+    margin: 32px 0;
   }
 }
 
