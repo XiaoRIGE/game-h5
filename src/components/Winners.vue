@@ -20,11 +20,26 @@
                 <div class="item-desc d-none d-md-block">
                   {{ record.itemName }}
                 </div>
-                <div class="item-desc d-none d-md-block">
+                <div class="item-desc d-none d-md-block color-gray">
                   {{ record.itemType }}
                 </div>
               </div>
             </div>
+          </template>
+
+          <template v-if="column.key === 'winner'">
+            <div class="d-flex align-items-center">
+              <img src="../assets/user.png" style="margin-right: 15px" />
+              <div>
+                <div class="item-desc d-none d-md-block">
+                  {{ record.winner }}
+                </div>
+              </div>
+            </div>
+          </template>
+
+          <template v-if="column.key === 'time'">
+            <span class="time-color">{{ record.time }}</span>
           </template>
         </template>
       </a-table>
@@ -54,27 +69,31 @@ const columns = ref([
     title: "ITEM",
     dataIndex: "item",
     key: "item",
-    width: "60%",
+    width: "42%",
   },
   {
     title: "RARITY",
     dataIndex: "rarityType",
     key: "rarityType",
+    width: "10%",
   },
   {
     title: "PRICE",
     dataIndex: "price",
     key: "price",
+    width: "10%",
   },
   {
     title: "WINNER",
     key: "winner",
     dataIndex: "winner",
+    width: "19%",
   },
   {
     title: "TIME",
     key: "time",
     dataIndex: "time",
+    width: "19%",
   },
 ]);
 
@@ -87,27 +106,31 @@ watch(
           title: "ITEM",
           dataIndex: "item",
           key: "item",
-          width: "60%",
+          width: "42%",
         },
         {
           title: "RARITY",
           dataIndex: "rarityType",
           key: "rarityType",
+          width: "10%",
         },
         {
           title: "PRICE",
           dataIndex: "price",
           key: "price",
+          width: "10%",
         },
         {
           title: "WINNER",
           key: "winner",
           dataIndex: "winner",
+          width: "19%",
         },
         {
           title: "TIME",
           key: "time",
           dataIndex: "time",
+          width: "19%",
         },
       ];
     } else {
@@ -225,6 +248,12 @@ const goPage = () => {
 <style lang="scss" scoped>
 .winner-box {
   margin: 32px 0;
+}
+.color-gray {
+  color: #cccccc;
+}
+.time-color {
+  color: #8b94a3;
 }
 .winner {
   margin: 0;
