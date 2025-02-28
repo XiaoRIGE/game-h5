@@ -124,6 +124,10 @@
 
 // reset
 // table
+.ant-table-header colgroup col:last-child {
+  display: none;
+}
+
 .ant-table-wrapper .ant-table-thead > tr > th {
   background: #1e1e1e;
   color: #fff;
@@ -228,6 +232,16 @@
   border: none;
   background: transparent;
 }
+// thead tr > th:last-child {
+//   border-right: 1px solid #3f3f3f !important;
+// }
+.ant-table-wrapper .ant-table-thead > tr > th:nth-last-child(2) {
+  border-right: 1px solid #3f3f3f !important;
+}
+
+tbody td:last-child {
+  border-right: 1px solid #3f3f3f !important;
+}
 
 // 表格样式2
 .transparent-head {
@@ -280,6 +294,14 @@
   }
   .ant-table-cell-row-hover {
     background-color: #1e1e1e !important;
+  }
+
+  .ant-table-wrapper .ant-table-thead > tr > th:nth-last-child(2) {
+    border-right: none !important;
+  }
+
+  tbody td:last-child {
+    border-right: 1px solid #000 !important;
   }
 }
 

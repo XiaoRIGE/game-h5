@@ -97,7 +97,7 @@ const columns = ref([
     title: "TIME",
     key: "time",
     dataIndex: "time",
-    width: "19%",
+    width: "18%",
   },
 ]);
 
@@ -134,7 +134,7 @@ watch(
           title: "TIME",
           key: "time",
           dataIndex: "time",
-          width: "19%",
+          width: "18%",
         },
       ];
     } else {
