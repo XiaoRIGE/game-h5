@@ -37,8 +37,12 @@
           </div>
 
           <div class="menu-box">
-            <div @click="goPage('allGames')" class="menu-item border-bo">GACHA GAMES</div>
-            <div @click="goPage('home')" class="menu-item border-bo">MARKETPLACE</div>
+            <div @click="goPage('allGames')" class="menu-item border-bo">
+              GACHA GAMES
+            </div>
+            <div @click="goPage('home')" class="menu-item border-bo">
+              MARKETPLACE
+            </div>
             <div @click="goPage('liveWinners')" class="menu-item border-bo">
               LIVE WINNERS HISTORY
             </div>
@@ -63,7 +67,9 @@
             aria-label="Close"
           />
 
-          <h5 class="offcanvas-title" id="offcanvasExampleLabel">TOKYO STUPID GAMES</h5>
+          <h5 class="offcanvas-title" id="offcanvasExampleLabel">
+            TOKYO STUPID GAMES
+          </h5>
           <div></div>
         </div>
         <div class="offcanvas-body">
@@ -82,11 +88,17 @@
               </div>
             </div>
 
-            <div class="menu-box" data-bs-toggle="offcanvas" href="#offcanvasExample">
+            <div
+              class="menu-box"
+              data-bs-toggle="offcanvas"
+              href="#offcanvasExample"
+            >
               <div @click="goPage('allGames')" class="menu-item border-bo">
                 GACHA GAMES
               </div>
-              <div @click="goPage('home')" class="menu-item border-bo">MARKETPLACE</div>
+              <div @click="goPage('home')" class="menu-item border-bo">
+                MARKETPLACE
+              </div>
               <div @click="goPage('liveWinners')" class="menu-item border-bo">
                 LIVE WINNERS HISTORY
               </div>
@@ -105,7 +117,8 @@
       </div>
     </div>
 
-    <span class="title">TOKYO $TUPID GAMES</span>
+    <!-- <span class="title">TOKYO $TUPID GAMES</span> -->
+    <img src="../assets/header.svg" class="header-title" />
 
     <!-- 右侧按钮 -->
     <div class="w-172 d-flex justify-content-end">
@@ -117,7 +130,10 @@
           <!-- 钱包余额 -->
           <div class="d-none d-lg-block">
             <div class="userInfo-item">
-              <img src="../assets//header-wallet.svg" class="userInfo-item__img" />
+              <img
+                src="../assets//header-wallet.svg"
+                class="userInfo-item__img"
+              />
               <span class="userInfo-item__text">10000</span>
               <img src="../assets/header-plus.svg" alt="" />
             </div>
@@ -125,13 +141,20 @@
           <!-- candy数量 -->
           <div class="d-none d-lg-block">
             <div class="userInfo-item">
-              <img src="../assets//header-candy.svg" class="userInfo-item__img" />
+              <img
+                src="../assets//header-candy.svg"
+                class="userInfo-item__img"
+              />
               <span class="userInfo-item__text">6868</span>
               <img src="../assets/header-plus.svg" alt="" />
             </div>
           </div>
           <!-- 用户头像 -->
-          <img @click="handleShowUserInfo" src="../assets/header-avatar.svg" alt="" />
+          <img
+            @click="handleShowUserInfo"
+            src="../assets/header-avatar.svg"
+            alt=""
+          />
 
           <!-- 个人信息弹窗  弹窗面板展示-->
           <Account v-if="showUserInfoModal" @closeAccount="handleClose" />
@@ -155,7 +178,11 @@
         <div class="drawer-content userInfo-box-small">
           <div class="drawer-header">
             <div class="modal-header flex-end">
-              <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
+              <img
+                @click="handleClose"
+                src="../assets/simpleClose.svg"
+                alt=""
+              />
             </div>
           </div>
           <div class="drawer-body">
@@ -423,6 +450,9 @@ const handleClose = () => {
 @media (max-width: 576px) {
   .w-172 {
     width: 72px;
+  }
+  .header-title {
+    width: 200px;
   }
 }
 @media (min-width: 576px) {

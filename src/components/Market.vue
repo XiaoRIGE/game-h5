@@ -142,9 +142,10 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    border-radius: 12px;
+    border-radius: 16px;
     img {
       width: 100%;
+      border-radius: 16px 16px 0 0;
     }
 
     &::before {
@@ -162,6 +163,7 @@
         #e10fa3 100%
       );
       opacity: 0.1; /* 只影响背景图像 */
+      border-radius: 16px;
     }
 
     .market-desc {
