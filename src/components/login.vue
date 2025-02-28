@@ -9,9 +9,16 @@
         <div class="modal-dialog">
           <div class="modal-content login-box">
             <div class="modal-header flex-end">
-              <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
+              <img
+                @click="handleClose"
+                src="../assets/simpleClose.svg"
+                alt=""
+              />
             </div>
-            <div class="title">TOKYO STUPID GAME$</div>
+            <!-- <div class="title">TOKYO STUPID GAME$</div> -->
+            <div class="title">
+              <img src="../assets/title.png" class="title-img" />
+            </div>
             <div class="modal-body form-box">
               <!-- by email -->
               <div class="email-form base-form">
@@ -43,11 +50,14 @@
 
               <!-- by web3 -->
               <div class="web3-form base-form">
-                <div class="base-form__title">Choose your web3 wallet to log in</div>
-
-                <img src="../assets/button-soft-p.svg" alt="" />
-                <img src="../assets/button-soft-s.svg" alt="" />
-                <img src="../assets/button-soft-b.svg" alt="" />
+                <div class="base-form__title">
+                  Choose your web3 wallet to log in
+                </div>
+                <div class="d-flex flex-column">
+                  <img src="../assets/button-soft-p.svg" alt="" />
+                  <img src="../assets/button-soft-s.svg" alt="" />
+                  <img src="../assets/button-soft-b.svg" alt="" />
+                </div>
               </div>
             </div>
             <div class="footer">
@@ -70,7 +80,10 @@
           <div class="modal-header flex-end">
             <img @click="handleClose" src="../assets/simpleClose.svg" alt="" />
           </div>
-          <div class="title">TOKYO STUPID GAME$</div>
+          <!-- <div class="title">TOKYO STUPID GAME$</div> -->
+          <div class="title">
+            <img src="../assets/title.png" class="title-img" />
+          </div>
         </div>
         <div class="drawer-body">
           <!-- by email -->
@@ -83,7 +96,9 @@
               aria-label="default input example"
             />
 
-            <div @click="handleNext" class="round-btn base-round-border">Continue</div>
+            <div @click="handleNext" class="round-btn base-round-border">
+              Continue
+            </div>
 
             <div class="flex-center">
               <div class="google-btn">
@@ -101,7 +116,9 @@
 
           <!-- by web3 -->
           <div class="web3-form base-form">
-            <div class="base-form__title">Choose your web3 wallet to log in</div>
+            <div class="base-form__title">
+              Choose your web3 wallet to log in
+            </div>
 
             <div class="d-flex justify-content-between">
               <img src="../assets/button-soft-mini-p.svg" alt="" />
@@ -110,7 +127,9 @@
             </div>
           </div>
         </div>
-        <div class="footer">By logging in I agree with Terms & Privacy Policy</div>
+        <div class="footer">
+          By logging in I agree with Terms & Privacy Policy
+        </div>
       </div>
     </div>
 
@@ -194,6 +213,9 @@ const handleSubmit = () => {
     font-size: 24px;
     text-align: center;
   }
+  .title-img {
+    width: 400px;
+  }
   .form-box {
     display: flex;
     justify-content: space-between;
@@ -225,6 +247,7 @@ const handleSubmit = () => {
       border-color: #3f3f3f;
       color: #717680;
       height: 48px;
+      box-sizing: border-box;
 
       &::placeholder {
         color: #717680;
@@ -295,6 +318,9 @@ const handleSubmit = () => {
     margin-top: 16px;
     font-size: 16px;
     text-align: center;
+  }
+  .title-img {
+    width: 68%;
   }
   .form-box {
     display: flex;
