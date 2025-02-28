@@ -3,8 +3,16 @@
 
 // 标题下面渐变
 .base-border {
-  border-image: linear-gradient(to right, blue, red) 4;
-  border-width: 4px;
+  border-image: linear-gradient(
+      to right,
+      #1e58fc,
+      #a427eb,
+      #d914e4,
+      #e10fa3,
+      #f10419
+    )
+    2;
+  border-width: 2px;
   border-style: solid;
   border-top: none;
   border-left: none;

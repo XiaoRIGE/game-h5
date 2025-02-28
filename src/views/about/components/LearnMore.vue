@@ -34,7 +34,7 @@
     margin-bottom: 12px;
     border: 1px solid #3f3f3f;
     border-radius: 65px;
-    padding: 0 36px 24px;
+    padding: 0 24px 24px;
     // display: flex;
     // align-items: center;
 
@@ -49,7 +49,7 @@
     color: #ffffff;
 
     &::after {
-      margin-left: 18px;
+      // margin-left: 8px;
       content: "";
       display: inline-block;
       width: 32px;
@@ -73,13 +73,15 @@
       line-height: 32px;
     }
     .btn {
+      margin-right: 12px;
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
       font-size: 16px;
       line-height: 50px;
       height: 50px;
-      padding: 0 24px;
+      padding: 0 12px;
+      background-color: rgba(45, 16, 57, 0.3);
 
       &::after {
         margin-left: 8px;

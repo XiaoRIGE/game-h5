@@ -111,7 +111,7 @@ const listData = ref([
       color: #ffffff;
     }
     .desc {
-      max-width: 40%;
+      max-width: 50%;
 
       font-weight: 400;
       font-size: 16px;

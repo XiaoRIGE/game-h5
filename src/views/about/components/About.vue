@@ -52,9 +52,20 @@
     justify-content: space-between;
     .card-item {
       width: 28%;
+      border-radius: 28px;
     }
     .card-line {
       width: 5%;
+    }
+  }
+}
+
+@media (max-width: 576px) {
+  .about {
+    .title {
+      img {
+        width: 100%;
+      }
     }
   }
 }
